@@ -1,0 +1,1398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — EconBrain | Strategic Inquiry</title>
+  <meta name="description" content="Initiate a strategic dialogue with EconBrain. Submit your inquiry to begin a conversation about economic intelligence, advisory, and transformation consulting for the GCC and MENA region.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="csses/commoncss/base.css">
+  <link rel="stylesheet" href="csses/commoncss/header.css">
+  <link rel="stylesheet" href="csses/commoncss/contact-cta.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       CONTACT PAGE — INTERNAL STYLES
+       Inherits tokens, reset, .wrap, .btn from base.css
+       Inherits #hdr, .nav, .m-nav from header.css
+       Inherits #contact info grid from contact-cta.css
+       ═══════════════════════════════════════════════════════════════ */
+
+    :root {
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* ─── SHARED ─────────────────────────────────────────────────── */
+    main { display: block; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 1 — INQUIRY HERO (heading block)
+       ═══════════════════════════════════════════════════════════════ */
+    #inquiry-hero {
+      background: var(--black);
+      padding: clamp(7.5rem, 14vh, 10.5rem) 0 clamp(4rem, 7vh, 5.5rem);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    /* thin accent rule across full width above content */
+    #inquiry-hero::before {
+      content: '';
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .inq-hero__inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(3rem, 6vw, 6rem);
+      align-items: end;
+    }
+
+    .inq-hero__left {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+
+    .inq-hero__h {
+      font-size: clamp(3rem, 6.5vw, 7.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.9;
+      color: var(--white);
+    }
+
+    .inq-hero__h em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .inq-hero__right {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .inq-hero__sub {
+      font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.8;
+      max-width: 48ch;
+    }
+
+    .inq-hero__note {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: rgba(255, 255, 255, 0.22);
+      line-height: 1.6;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 2 — INQUIRY FORM
+       ═══════════════════════════════════════════════════════════════ */
+    #inquiry-form {
+      background: var(--black);
+      padding: clamp(4.5rem, 9vw, 7rem) 0 clamp(6rem, 12vw, 10rem);
+    }
+
+    /* ─── Form blocks (numbered editorial sections) ──────────────── */
+    .inq__form {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .inq__block {
+      padding: clamp(2.5rem, 5vw, 4rem) 0;
+    }
+
+    .inq__block:last-of-type {
+      border-bottom: 1px solid var(--border);
+    }
+
+   
+
+    .inq__block-num {
+      font-size: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      line-height: 1;
+    }
+
+    .inq__block-title {
+      font-size: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.25);
+      line-height: 1;
+    }
+
+    .inq__block-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      align-self: center;
+    }
+
+    /* ─── Field Grid ────────────────────────────────────────────── */
+    .form__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0 clamp(2.5rem, 5vw, 5rem);
+    }
+
+    .form__grid--1 {
+      grid-template-columns: 1fr;
+    }
+
+    .form__grid--3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .form__field {
+      display: flex;
+      flex-direction: column;
+      padding: clamp(1.25rem, 2.5vw, 2rem) 0;
+    }
+
+    .form__field:has(.form__select-wrap) {
+      overflow: visible;
+      position: relative;
+      z-index: 1;
+    }
+
+    .form__field:has(.form__select-wrap.is-open) {
+      z-index: 20;
+    }
+
+    .form__label {
+      font-size: 1.4375rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--g400);
+      margin-bottom: 1rem;
+      line-height: 1;
+    }
+
+    .form__label em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .form__input,
+    .form__select,
+    .form__textarea {
+      width: 100%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--borderL);
+      color: var(--white);
+      font-family: inherit;
+      font-size: clamp(0.9375rem, 1.3vw, 1.125rem);
+      font-weight: 500;
+      padding: 0.875rem 0;
+      outline: none;
+      appearance: none;
+      -webkit-appearance: none;
+      transition: border-color 0.25s var(--ease);
+    }
+
+    .form__input::placeholder,
+    .form__textarea::placeholder {
+      color: rgba(255, 255, 255, 0.18);
+      font-weight: 400;
+    }
+
+    .form__input:focus,
+    .form__textarea:focus {
+      border-bottom-color: var(--accent);
+    }
+
+    /* ─── Custom select (native hidden; panel matches EconBrain UI) ── */
+    .form__select-wrap {
+      position: relative;
+      width: 100%;
+    }
+
+    .form__select--native {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    .form__select-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid var(--borderL);
+      color: rgba(255, 255, 255, 0.32);
+      font-family: inherit;
+      font-size: clamp(0.9375rem, 1.3vw, 1.125rem);
+      font-weight: 500;
+      padding: 0.875rem 0;
+      text-align: left;
+      cursor: pointer;
+      outline: none;
+      transition: border-color 0.25s var(--ease), color 0.25s var(--ease);
+    }
+
+    .form__select-wrap.has-value .form__select-trigger {
+      color: var(--white);
+    }
+
+    .form__select-wrap.is-open .form__select-trigger,
+    .form__select-trigger:focus-visible {
+      border-bottom-color: var(--accent);
+    }
+
+    .form__select-value {
+      flex: 1;
+      min-width: 0;
+      line-height: 1.45;
+    }
+
+    .form__select-chevron {
+      flex-shrink: 0;
+      width: 12px;
+      height: 8px;
+      color: var(--g400);
+      transition: transform 0.22s var(--ease), color 0.22s var(--ease);
+    }
+
+    .form__select-wrap.is-open .form__select-chevron {
+      transform: rotate(180deg);
+      color: var(--accent);
+    }
+
+    .form__select-list {
+      position: absolute;
+      top: calc(100% + 1px);
+      left: 0;
+      right: 0;
+      z-index: 100;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      background: #0c0c0c;
+      border: 1px solid var(--borderL);
+      border-top: 2px solid var(--accent);
+      max-height: min(22rem, 52vh);
+      overflow-y: auto;
+      box-shadow: 0 28px 56px rgba(0, 0, 0, 0.72);
+      scrollbar-width: thin;
+      scrollbar-color: var(--borderL) transparent;
+    }
+
+    .form__select-list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .form__select-list::-webkit-scrollbar-thumb {
+      background: var(--borderL);
+    }
+
+    .form__select-list[hidden] {
+      display: none;
+    }
+
+    .form__select-option {
+      padding: 0.9375rem 1.125rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.55);
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.15s var(--ease), color 0.15s var(--ease);
+    }
+
+    .form__select-option:last-child {
+      border-bottom: none;
+    }
+
+    .form__select-option:hover,
+    .form__select-option.is-focused {
+      background: #141414;
+      color: var(--white);
+    }
+
+    .form__select-option.is-selected {
+      background: #111111;
+      color: var(--accent);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .form__select-option.is-selected:hover,
+    .form__select-option.is-selected.is-focused {
+      background: #141414;
+      color: var(--white);
+      box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .form__textarea {
+      resize: none;
+      height: clamp(160px, 20vw, 220px);
+      line-height: 1.75;
+    }
+
+    /* ─── Form footer: submit ───────────────────────────────────── */
+    .inq__form-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 3rem;
+      margin-top: clamp(3rem, 6vw, 5rem);
+      flex-wrap: wrap;
+    }
+
+    .inq__form-note {
+      font-size: 0.6875rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.28);
+      line-height: 1.7;
+      max-width: 44ch;
+    }
+
+    .btn--inquiry {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.875rem;
+      background: var(--white);
+      color: var(--black);
+      border: 1px solid var(--white);
+      padding: 1.375rem 3rem;
+      font-family: inherit;
+      font-size: 0.6875rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.22s var(--ease), color 0.22s var(--ease), border-color 0.22s var(--ease);
+      flex-shrink: 0;
+    }
+
+    .btn--inquiry:hover {
+      background: transparent;
+      color: var(--white);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 3 — LOCATION
+       Edge-to-edge, no .wrap outer — split panel layout
+       ═══════════════════════════════════════════════════════════════ */
+    #location {
+      display: grid;
+      grid-template-columns: 44fr 56fr;
+      min-height: 78vh;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* ─── Left Panel ────────────────────────────────────────────── */
+    .loc__left {
+      background: var(--darker);
+      padding: clamp(5rem, 9vw, 7.5rem) 5vw;
+      display: flex;
+      flex-direction: column;
+      border-right: 1px solid var(--border);
+      position: relative;
+      min-width: 0;
+    }
+
+    .loc__eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+    }
+
+    .loc__eyebrow-tag {
+      font-size: 0.5rem;
+      font-weight: 800;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .loc__eyebrow-rule {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+      max-width: 60px;
+    }
+
+    .loc__eyebrow-label {
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .loc__city-block {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    .loc__city {
+      font-size: clamp(4.5rem, 9vw, 10.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.045em;
+      line-height: 0.87;
+      color: var(--white);
+      display: block;
+      margin-bottom: clamp(0.75rem, 1.5vw, 1.25rem);
+    }
+
+    .loc__country {
+      font-size: clamp(0.6875rem, 1vw, 0.875rem);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--g400);
+      margin-bottom: clamp(3rem, 6vw, 5rem);
+    }
+
+    .loc__details {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      width: 100%;
+    }
+
+    .loc__detail {
+      display: block;
+      width: 100%;
+      padding: 1.125rem 0;
+    }
+
+    .loc__detail-val {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+      font-size: 1rem;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.55;
+      overflow-wrap: break-word;
+      word-wrap: break-word;
+    }
+
+    a.loc__detail-val {
+      color: rgba(255, 255, 255, 0.75);
+      transition: color 0.2s;
+    }
+
+    a.loc__detail-val:hover {
+      color: var(--white);
+    }
+
+    .loc__map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.875rem;
+      font-size: 0.5625rem;
+      font-weight: 800;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--g400);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.625rem;
+      transition: color 0.22s var(--ease), border-color 0.22s var(--ease);
+      align-self: flex-start;
+    }
+
+    .loc__map-link:hover {
+      color: var(--white);
+      border-bottom-color: var(--white);
+    }
+
+    .loc__map-link:hover .loc__map-arrow {
+      transform: translate(3px, -3px);
+    }
+
+    .loc__map-arrow {
+      width: 12px;
+      height: 12px;
+      flex-shrink: 0;
+      transition: transform 0.25s var(--ease);
+    }
+
+    /* ─── Right Panel ───────────────────────────────────────────── */
+    .loc__right {
+      position: relative;
+      overflow: hidden;
+      background: var(--black);
+      min-height: 55vw;
+    }
+
+    .loc__img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: grayscale(1) contrast(1.12) brightness(0.6);
+      display: block;
+      transform: scale(1.03);
+      transition: transform 9s ease;
+    }
+
+    #location:hover .loc__img {
+      transform: scale(1.07);
+    }
+
+    /* Bottom gradient overlay on the image */
+    .loc__right::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        180deg,
+        transparent 30%,
+        rgba(10, 10, 10, 0.55) 80%,
+        rgba(10, 10, 10, 0.88) 100%
+      );
+      pointer-events: none;
+    }
+
+    .loc__overlay-card {
+      position: absolute;
+      bottom: clamp(2rem, 4vw, 3.5rem);
+      left: clamp(2rem, 4vw, 3.5rem);
+      z-index: 2;
+      background: rgba(10, 10, 10, 0.88);
+      border: 1px solid var(--borderL);
+      padding: clamp(1.25rem, 2.5vw, 2rem) clamp(1.5rem, 3vw, 2.5rem);
+      max-width: clamp(240px, 36vw, 340px);
+    }
+
+    .loc__card-tag {
+      font-size: 0.4375rem;
+      font-weight: 800;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.625rem;
+      display: block;
+    }
+
+    .loc__card-h {
+      font-size: clamp(0.9375rem, 1.4vw, 1.1875rem);
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .loc__card-p {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════════════════════ */
+    #footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 2.5rem 0;
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer__copy {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.2);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .footer__a {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--g400);
+      transition: color 0.2s;
+    }
+
+    .footer__a:hover,
+    .footer__a--active {
+      color: var(--white);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════════ */
+    @media (max-width: 1080px) {
+      .inq-hero__inner {
+        grid-template-columns: 1fr;
+        gap: clamp(2rem, 5vw, 3rem);
+      }
+
+      .inq-hero__right {
+        max-width: 60ch;
+      }
+
+      .form__grid--3 {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      #location {
+        grid-template-columns: 1fr;
+      }
+
+      .loc__left {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+        min-height: auto;
+      }
+
+      .loc__right {
+        min-height: 55vw;
+      }
+
+      .inq__form-footer {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .btn--inquiry {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 720px) {
+      /* 16px minimum prevents iOS Safari auto-zoom on input focus */
+      .form__input,
+      .form__textarea,
+      .form__select--native {
+        font-size: 16px;
+      }
+
+      /* Mobile: system native picker; desktop keeps custom EconBrain panel */
+      .form__select-trigger,
+      .form__select-list {
+        display: none !important;
+      }
+
+      .form__field:has(.form__select-wrap.is-open) {
+        z-index: 1;
+      }
+
+      .form__select-wrap .form__select--native {
+        position: static;
+        width: 100%;
+        height: auto;
+        min-height: 2.75rem;
+        margin: 0;
+        padding: 0.875rem 0;
+        overflow: visible;
+        clip: auto;
+        clip-path: none;
+        white-space: normal;
+        border: none;
+        border-bottom: 1px solid var(--borderL);
+        background-color: transparent;
+        color: rgba(255, 255, 255, 0.32);
+        font-weight: 500;
+        cursor: pointer;
+        appearance: auto;
+        -webkit-appearance: menulist;
+      }
+
+      .form__select-wrap.has-value .form__select--native {
+        color: var(--white);
+      }
+
+      .form__select-wrap .form__select--native:focus {
+        border-bottom-color: var(--accent);
+        outline: none;
+      }
+
+      .form__grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form__grid--3 {
+        grid-template-columns: 1fr;
+      }
+
+      .inq-hero__h {
+        letter-spacing: -0.035em;
+      }
+
+      .loc__city {
+        font-size: clamp(3.75rem, 15vw, 5rem);
+      }
+
+      .loc__overlay-card {
+        left: 1.25rem;
+        bottom: 1.25rem;
+        right: 1.25rem;
+        max-width: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #inquiry-hero {
+        padding-top: clamp(6rem, 18vh, 8rem);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header id="hdr">
+  <div class="wrap">
+    <div class="hdr__inner">
+
+      <a href="index.html" class="logo">
+        <span class="logo__mark">ECONBRAIN</span>
+        <span class="logo__sub">Feasibility Studies Consultancies</span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav__a">Home</a>
+        <a href="about.html" class="nav__a">About</a>
+
+        <div class="nav__drop">
+          <button class="nav__drop-trigger">Services</button>
+          <div class="dropdown">
+            <div class="dropdown__grid">
+
+              <a href="services/ai.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10"/><path d="M9 7V5M12 7V5M15 7V5M9 17v2M12 17v2M15 17v2M7 9H5M7 12H5M7 15H5M17 9h2M17 12h2M17 15h2"/><rect x="9" y="9" width="6" height="6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">01</span><span class="dd-item__name">Innovation &amp; Artificial Intelligence Research &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/standardization.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">02</span><span class="dd-item__name">Quality &amp; Standardization Consultants</span></span>
+              </a>
+
+              <a href="services/marketing.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M8 20V12M12 20V8M16 20V4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">03</span><span class="dd-item__name">Marketing Research &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/hr.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.5"/><path d="M20 20c0-2.8-1.8-5.2-4-6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">04</span><span class="dd-item__name">Human Resources Consultancies</span></span>
+              </a>
+
+              <a href="services/project.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/><rect x="9" y="14" width="6" height="7"/><path d="M9 11h.01M15 11h.01"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">05</span><span class="dd-item__name">Project Development Consultant</span></span>
+              </a>
+
+              <a href="services/management.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="13"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M2 13h20"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">06</span><span class="dd-item__name">Management Consultancies</span></span>
+              </a>
+
+              <a href="services/facilities.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">07</span><span class="dd-item__name">Facilities Resources Planning Consultancy</span></span>
+              </a>
+
+              <a href="services/advertising.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6l-8 4H5a2 2 0 00-2 2v2a2 2 0 002 2h1l1.5 4h2L8 16h2l8 4v-2"/><path d="M18 8c1 .5 2 1.5 2 4s-1 3.5-2 4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">08</span><span class="dd-item__name">Advertising Researches &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/media.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14"/><path d="M2 9h20M2 15h20M7 5V3M12 5V3M17 5V3M7 19v2M12 19v2M17 19v2"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">09</span><span class="dd-item__name">Media Studies &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/feasibility.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5M10 9H8"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">10</span><span class="dd-item__name">Feasibility Studies Consultancies</span></span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="nav__a">Insights</a>
+        <a href="contact.html" class="nav__a" style="color:var(--white);">Contact</a>
+      </nav>
+
+      <div class="hdr__actions">
+        <button class="hamburger" onclick="openNav()" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ════════════════════ MOBILE NAV ════════════════════ -->
+<nav class="m-nav" id="mNav">
+  <button class="m-nav__close" onclick="closeNav()">✕</button>
+  <a href="index.html" class="m-nav__a" onclick="closeNav()">Home</a>
+  <a href="about.html" class="m-nav__a" onclick="closeNav()">About</a>
+
+  <div class="m-nav__drop" id="mNavServicesDrop">
+    <button class="m-nav__drop-btn" onclick="toggleMobileServices()">
+      Services
+      <svg class="m-nav__drop-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-nav__services">
+      <a href="ai.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10"/><path d="M9 7V5M12 7V5M15 7V5M9 17v2M12 17v2M15 17v2M7 9H5M7 12H5M7 15H5M17 9h2M17 12h2M17 15h2"/><rect x="9" y="9" width="6" height="6"/></svg></span>Innovation &amp; Artificial Intelligence Research &amp; Consultancies</a>
+      <a href="standardization.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>Quality &amp; Standardization Consultants</a>
+      <a href="marketing.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M8 20V12M12 20V8M16 20V4"/></svg></span>Marketing Research &amp; Consultancies</a>
+      <a href="hr.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.5"/><path d="M20 20c0-2.8-1.8-5.2-4-6"/></svg></span>Human Resources Consultancies</a>
+      <a href="project.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/><rect x="9" y="14" width="6" height="7"/><path d="M9 11h.01M15 11h.01"/></svg></span>Project Development Consultant</a>
+      <a href="management.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="13"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M2 13h20"/></svg></span>Management Consultancies</a>
+      <a href="facilities.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>Facilities Resources Planning Consultancy</a>
+      <a href="advertising.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6l-8 4H5a2 2 0 00-2 2v2a2 2 0 002 2h1l1.5 4h2L8 16h2l8 4v-2"/><path d="M18 8c1 .5 2 1.5 2 4s-1 3.5-2 4"/></svg></span>Advertising Researches &amp; Consultancies</a>
+      <a href="media.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14"/><path d="M2 9h20M2 15h20M7 5V3M12 5V3M17 5V3M7 19v2M12 19v2M17 19v2"/></svg></span>Media Studies &amp; Consultancies</a>
+      <a href="feasibility.html" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5M10 9H8"/></svg></span>Feasibility Studies Consultancies</a>
+    </div>
+  </div>
+
+  <a href="#" class="m-nav__a" onclick="closeNav()">Insights</a>
+  <a href="contact.html" class="m-nav__a" onclick="closeNav()">Contact</a>
+</nav>
+
+<main>
+
+
+
+  <!-- ════════════════════ SECTION 2 — INQUIRY FORM ════════════════════ -->
+  <section id="inquiry-form">
+    <div class="wrap">
+
+      <form class="inq__form" id="strategicInquiryForm" novalidate>
+
+        <!-- BLOCK 01 — CONTACT PROFILE -->
+        <div class="inq__block">
+          <div class="inq__block-head">
+            <span class="inq__block-num">01</span>
+            <span class="inq__block-title">CONTACT PROFILE</span>
+            <span class="inq__block-rule"></span>
+          </div>
+
+          <div class="form__grid">
+            <div class="form__field">
+              <label class="form__label" for="fullName">Full Name <em>*</em></label>
+              <input class="form__input" type="text" id="fullName" name="fullName" placeholder="Your full name" required>
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="organization">Organization / Company <em>*</em></label>
+              <input class="form__input" type="text" id="organization" name="organization" placeholder="Your organization" required>
+            </div>
+          </div>
+
+          <div class="form__grid">
+            <div class="form__field">
+              <label class="form__label" for="position">Position / Role</label>
+              <input class="form__input" type="text" id="position" name="position" placeholder="Chief Executive Officer, Director, VP...">
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="email">Business Email <em>*</em></label>
+              <input class="form__input" type="email" id="email" name="email" placeholder="email@organization.com" required>
+            </div>
+          </div>
+
+          <div class="form__grid">
+            <div class="form__field">
+              <label class="form__label" for="phone">Phone Number</label>
+              <input class="form__input" type="tel" id="phone" name="phone" placeholder="+971 00 000 0000">
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="country">Country / Region <em>*</em></label>
+              <input class="form__input" type="text" id="country" name="country" placeholder="UAE, Saudi Arabia, Qatar, GCC..." required>
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 02 — ENGAGEMENT PARAMETERS -->
+        <div class="inq__block">
+          <div class="inq__block-head">
+            <span class="inq__block-num">02</span>
+            <span class="inq__block-title">ENGAGEMENT PARAMETERS</span>
+            <span class="inq__block-rule"></span>
+          </div>
+
+          <div class="form__grid form__grid--1">
+            <div class="form__field">
+              <label class="form__label" for="service">Service Required <em>*</em></label>
+              <select class="form__select" id="service" name="service" required>
+                <option value="" disabled selected>Select a practice area</option>
+                <option value="ai-innovation">Innovation &amp; Artificial Intelligence Research &amp; Consultancies</option>
+                <option value="quality">Quality &amp; Standardization Consultants</option>
+                <option value="marketing">Marketing Research &amp; Consultancies</option>
+                <option value="hr">Human Resources Consultancies</option>
+                <option value="project-dev">Project Development Consultant</option>
+                <option value="management">Management Consultancies</option>
+                <option value="facilities">Facilities Resources Planning Consultancy</option>
+                <option value="advertising">Advertising Researches &amp; Consultancies</option>
+                <option value="media">Media Studies &amp; Consultancies</option>
+                <option value="feasibility">Feasibility Studies Consultancies</option>
+                <option value="multiple">Multiple Services</option>
+                <option value="unsure">Not Sure Yet</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form__grid">
+            <div class="form__field">
+              <label class="form__label" for="orgType">Organization Type</label>
+              <input class="form__input" type="text" id="orgType" name="orgType" placeholder="Government entity, Enterprise, SME, Academic...">
+            </div>
+            <div class="form__field">
+              <label class="form__label" for="timeline">Estimated Timeline</label>
+              <input class="form__input" type="text" id="timeline" name="timeline" placeholder="Q3 2026, 6 months, Urgent...">
+            </div>
+          </div>
+
+          <div class="form__grid form__grid--1">
+            <div class="form__field">
+              <label class="form__label" for="scope">Engagement Scope</label>
+              <input class="form__input" type="text" id="scope" name="scope" placeholder="Advisory only, Research + Strategy, Full end-to-end engagement...">
+            </div>
+          </div>
+        </div>
+
+        <!-- BLOCK 03 — STRATEGIC BRIEF -->
+        <div class="inq__block">
+          <div class="inq__block-head">
+            <span class="inq__block-num">03</span>
+            <span class="inq__block-title">STRATEGIC BRIEF</span>
+            <span class="inq__block-rule"></span>
+          </div>
+
+          <div class="form__grid form__grid--1">
+            <div class="form__field">
+              <label class="form__label" for="overview">Strategic Objective / Project Overview <em>*</em></label>
+              <textarea
+                class="form__textarea"
+                id="overview"
+                name="overview"
+                placeholder="Describe your strategic challenge, initiative, or the outcome you are seeking. The more context you provide, the more precisely we can assess fit and priority."
+                required
+              ></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBMIT -->
+        <div class="inq__form-footer">
+          <p class="inq__form-note">
+            By submitting this inquiry you agree that EconBrain may retain your contact information solely for the purpose of responding to your submission. No information is shared with third parties.
+          </p>
+          <button type="submit" class="btn--inquiry">
+            SUBMIT STRATEGIC INQUIRY
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M1 7H13M13 7L7 1M13 7L7 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- ════════════════════ SECTION 3 — LOCATION ════════════════════ -->
+  <section id="location" aria-label="Office location">
+
+    <!-- Left: Location Information -->
+    <div class="loc__left">
+
+      
+
+      <div class="loc__city-block">
+        <span class="loc__city">DUBAI</span>
+        <p class="loc__country">United Arab Emirates</p>
+      </div>
+
+      <div class="loc__details">
+        <div class="loc__detail">
+          <p class="loc__detail-val">Dubai, United Arab Emirates</p>
+        </div>
+        <div class="loc__detail">
+          <a href="mailto:italhasani@gmail.com" class="loc__detail-val">italhasani@gmail.com</a>
+        </div>
+        <div class="loc__detail">
+          <a href="tel:+971506967476" class="loc__detail-val">+971 50 696 7476</a>
+        </div>
+        <div class="loc__detail">
+          <p class="loc__detail-val">Sun – Thu &nbsp;·&nbsp; 09:00 – 18:00 GST</p>
+        </div>
+      </div>
+
+      <a href="https://maps.google.com/?q=Dubai,UAE" target="_blank" rel="noopener noreferrer" class="loc__map-link">
+        <svg class="loc__map-arrow" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M1 13L13 1M13 1H4M13 1V10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>View on Google Maps</span>
+      </a>
+
+    </div>
+
+    <!-- Right: Cinematic City Image -->
+    <div class="loc__right">
+      <img
+        class="loc__img"
+        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=85&auto=format&fit=crop"
+        alt="Dubai skyline — EconBrain regional headquarters and strategic operating base"
+        loading="lazy"
+      >
+
+      <div class="loc__overlay-card">
+        <span class="loc__card-tag">STRATEGIC OPERATING BASE</span>
+        <h3 class="loc__card-h">Dubai, UAE</h3>
+        <p class="loc__card-p">Gateway to the GCC &amp; MENA region — the institutional and commercial hub from which EconBrain deploys strategic intelligence across critical markets.</p>
+      </div>
+    </div>
+
+  </section>
+
+
+
+</main>
+
+
+
+<script>
+  /* ── Header scroll ── */
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => {
+    hdr.style.background = window.scrollY > 60
+      ? 'rgba(10,10,10,1)'
+      : 'rgba(10,10,10,.96)';
+  }, { passive: true });
+
+  /* ── Mobile nav ── */
+  function openNav() {
+    document.getElementById('mNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    document.getElementById('mNav').classList.remove('open');
+    document.getElementById('mNavServicesDrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function toggleMobileServices() {
+    document.getElementById('mNavServicesDrop').classList.toggle('open');
+  }
+
+  /* ── Smooth scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  /* ── Custom select (editorial panel on desktop; native picker on mobile) ── */
+  const MOBILE_SELECT_MQ = window.matchMedia('(max-width: 720px)');
+
+  function usesNativeSelect() {
+    return MOBILE_SELECT_MQ.matches;
+  }
+
+  function initCustomSelect(nativeSelect) {
+    if (!nativeSelect || nativeSelect.dataset.customized) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'form__select-wrap';
+
+    const trigger = document.createElement('button');
+    trigger.type = 'button';
+    trigger.className = 'form__select-trigger';
+    trigger.setAttribute('aria-haspopup', 'listbox');
+    trigger.setAttribute('aria-expanded', 'false');
+
+    const valueEl = document.createElement('span');
+    valueEl.className = 'form__select-value';
+
+    const chevron = document.createElement('span');
+    chevron.className = 'form__select-chevron';
+    chevron.setAttribute('aria-hidden', 'true');
+    chevron.innerHTML = '<svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1.5L6 6.5L11 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+    trigger.append(valueEl, chevron);
+
+    const list = document.createElement('ul');
+    list.className = 'form__select-list';
+    list.setAttribute('role', 'listbox');
+    list.hidden = true;
+
+    const listId = nativeSelect.id ? nativeSelect.id + '-listbox' : 'select-listbox-' + Math.random().toString(36).slice(2, 8);
+    list.id = listId;
+    trigger.setAttribute('aria-controls', listId);
+
+    const label = document.querySelector('label[for="' + nativeSelect.id + '"]');
+    if (label) {
+      const labelId = nativeSelect.id + '-label';
+      if (!label.id) label.id = labelId;
+      trigger.setAttribute('aria-labelledby', labelId);
+    }
+
+    const options = [];
+    let focusedIndex = -1;
+
+    function getPlaceholderOption() {
+      return Array.from(nativeSelect.options).find(function (opt) {
+        return opt.disabled || opt.value === '';
+      });
+    }
+
+    function syncTrigger() {
+      const selected = nativeSelect.options[nativeSelect.selectedIndex];
+      const placeholder = getPlaceholderOption();
+      const hasValue = nativeSelect.value !== '';
+
+      wrap.classList.toggle('has-value', hasValue);
+
+      if (hasValue && selected) {
+        valueEl.textContent = selected.textContent;
+      } else if (placeholder) {
+        valueEl.textContent = placeholder.textContent;
+      } else {
+        valueEl.textContent = nativeSelect.options[0]?.textContent || '';
+      }
+
+      options.forEach(function (item) {
+        item.el.classList.toggle('is-selected', item.el.dataset.value === nativeSelect.value && nativeSelect.value !== '');
+      });
+    }
+
+    function closeList() {
+      wrap.classList.remove('is-open');
+      trigger.setAttribute('aria-expanded', 'false');
+      list.hidden = true;
+      options.forEach(function (item) { item.el.classList.remove('is-focused'); });
+      focusedIndex = -1;
+    }
+
+    function openList() {
+      if (usesNativeSelect()) return;
+      wrap.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      list.hidden = false;
+
+      const selectedIndex = options.findIndex(function (item) {
+        return item.el.dataset.value === nativeSelect.value;
+      });
+      focusedIndex = selectedIndex >= 0 ? selectedIndex : 0;
+      focusOption(focusedIndex, false);
+    }
+
+    function focusOption(index, scrollIntoView) {
+      if (!options.length) return;
+      focusedIndex = Math.max(0, Math.min(index, options.length - 1));
+      options.forEach(function (item, i) {
+        item.el.classList.toggle('is-focused', i === focusedIndex);
+      });
+      if (scrollIntoView !== false) {
+        options[focusedIndex].el.scrollIntoView({ block: 'nearest' });
+      }
+    }
+
+    function chooseOption(item) {
+      nativeSelect.value = item.el.dataset.value;
+      nativeSelect.dispatchEvent(new Event('change', { bubbles: true }));
+      syncTrigger();
+      closeList();
+      trigger.focus();
+    }
+
+    Array.from(nativeSelect.options).forEach(function (opt) {
+      if ((opt.disabled || opt.value === '') && opt.value === '') return;
+
+      const li = document.createElement('li');
+      li.className = 'form__select-option';
+      li.setAttribute('role', 'option');
+      li.dataset.value = opt.value;
+      li.textContent = opt.textContent;
+
+      li.addEventListener('click', function () {
+        chooseOption({ el: li });
+      });
+
+      li.addEventListener('mouseenter', function () {
+        focusedIndex = options.findIndex(function (item) { return item.el === li; });
+        focusOption(focusedIndex, false);
+      });
+
+      options.push({ el: li, option: opt });
+      list.appendChild(li);
+    });
+
+    nativeSelect.classList.add('form__select--native');
+    nativeSelect.dataset.customized = 'true';
+
+    const parent = nativeSelect.parentNode;
+    parent.insertBefore(wrap, nativeSelect);
+    wrap.append(nativeSelect, trigger, list);
+
+    trigger.addEventListener('click', function () {
+      if (usesNativeSelect()) return;
+      if (wrap.classList.contains('is-open')) {
+        closeList();
+      } else {
+        openList();
+      }
+    });
+
+    trigger.addEventListener('keydown', function (e) {
+      if (usesNativeSelect()) return;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+      }
+
+      if (e.key === 'Escape') {
+        closeList();
+        return;
+      }
+
+      if (!wrap.classList.contains('is-open')) {
+        if (e.key === 'ArrowDown' || e.key === 'ArrowUp' || e.key === 'Enter' || e.key === ' ') {
+          openList();
+        }
+        return;
+      }
+
+      if (e.key === 'ArrowDown') focusOption(focusedIndex + 1);
+      if (e.key === 'ArrowUp') focusOption(focusedIndex - 1);
+      if (e.key === 'Enter' || e.key === ' ') {
+        if (focusedIndex >= 0) chooseOption(options[focusedIndex]);
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (usesNativeSelect()) return;
+      if (!wrap.contains(e.target)) closeList();
+    });
+
+    MOBILE_SELECT_MQ.addEventListener('change', function () {
+      closeList();
+      syncTrigger();
+    });
+
+    nativeSelect.addEventListener('change', syncTrigger);
+
+    syncTrigger();
+  }
+
+  function getSelectValidationLine(field) {
+    const wrap = field.closest('.form__select-wrap');
+    if (!wrap) return field;
+    return usesNativeSelect()
+      ? wrap.querySelector('.form__select--native')
+      : wrap.querySelector('.form__select-trigger');
+  }
+
+  const serviceSelect = document.getElementById('service');
+  if (serviceSelect) initCustomSelect(serviceSelect);
+
+  /* ── Form submission (client-side feedback) ── */
+  const form = document.getElementById('strategicInquiryForm');
+  if (form) {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const btn = form.querySelector('.btn--inquiry');
+      const originalText = btn.innerHTML;
+
+      /* Validate required fields */
+      const required = form.querySelectorAll('[required]');
+      let valid = true;
+      required.forEach(field => {
+        if (!field.value.trim()) {
+          valid = false;
+          const line = getSelectValidationLine(field);
+          if (line) line.style.borderBottomColor = '#ff4040';
+          field.addEventListener('change', function clear() {
+            if (line) line.style.borderBottomColor = '';
+            field.removeEventListener('change', clear);
+          }, { once: true });
+          if (!wrap) {
+            field.addEventListener('input', function clear() {
+              field.style.borderBottomColor = '';
+              field.removeEventListener('input', clear);
+            }, { once: true });
+          }
+        }
+      });
+
+      if (!valid) return;
+
+      btn.innerHTML = 'INQUIRY RECEIVED &nbsp;✓';
+      btn.style.background = 'var(--accent)';
+      btn.style.borderColor = 'var(--accent)';
+      btn.style.color = 'var(--white)';
+      btn.disabled = true;
+
+      setTimeout(() => {
+        btn.innerHTML = originalText;
+        btn.style.background = '';
+        btn.style.borderColor = '';
+        btn.style.color = '';
+        btn.disabled = false;
+        form.reset();
+        if (serviceSelect) {
+          serviceSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      }, 4000);
+    });
+  }
+</script>
+</body>
+</html>

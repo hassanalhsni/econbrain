@@ -1,0 +1,183 @@
+/**
+ * index.html — Editorial feature (#philosophy accent block + #editorial)
+ */
+
+#philosophy {
+  background: var(--accent);
+  padding: 2rem 0;
+}
+
+.phil__inner {
+  max-width: 1060px;
+}
+
+.phil__q-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  max-width: 70%;
+  margin: 0 auto;
+}
+
+.phil__q {
+  font-size: clamp(2.25rem, 5vw, 5rem);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: var(--white);
+  margin-bottom: 3rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.phil__attr {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#editorial {
+  position: relative;
+  z-index: 10;
+  background: var(--darker);
+  padding: clamp(5rem, 10vw, 9rem) 0;
+  border-top: 1px solid var(--border);
+  overflow: visible;
+}
+
+#editorial .wrap {
+  overflow: visible;
+}
+
+.ed__grid {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+  position: relative;
+  overflow: visible;
+}
+
+.ed__visual {
+  position: relative;
+  z-index: 3;
+  min-width: 0;
+  overflow: visible;
+}
+
+.ed__grid > div:not(.ed__visual) {
+  position: relative;
+  z-index: 1;
+}
+
+.ed__stage {
+  position: relative;
+  width: 110%;
+  margin-left: 0;
+  padding: clamp(2rem, 5vw, 4rem) 0;
+  overflow: visible;
+}
+
+.ed__img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 5/6;
+  object-fit: cover;
+  filter: grayscale(0.5) contrast(1.1) brightness(0.85);
+  will-change: transform;
+}
+
+.ed__float {
+  position: absolute;
+  width: clamp(88px, 22vw, 168px);
+  aspect-ratio: 1;
+  object-fit: cover;
+  border: 1px solid var(--borderL);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.55);
+  filter: grayscale(0.35) contrast(1.08) brightness(0.9);
+  will-change: transform;
+  z-index: 99;
+}
+
+.ed__float--1 {
+  top: 6%;
+  right: -4%;
+}
+
+.ed__float--2 {
+  top: 38%;
+  left: -8%;
+  width: clamp(72px, 18vw, 140px);
+}
+
+.ed__float--3 {
+  bottom: 22%;
+  right: 8%;
+  width: clamp(96px, 24vw, 180px);
+  aspect-ratio: 4/5;
+}
+
+.ed__float--4 {
+  bottom: 4%;
+  left: 12%;
+  width: clamp(80px, 20vw, 152px);
+}
+
+.ed__img-placeholder {
+  width: 100%;
+  aspect-ratio: 4/5;
+  background: var(--border);
+  border: 1px solid var(--borderL);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--borderL);
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.ed__h {
+  font-size: clamp(2rem, 3.5vw, 3.25rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  margin-bottom: 2rem;
+}
+
+.ed__body {
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.8;
+  margin-bottom: 2rem;
+}
+
+.ed__body + .ed__body {
+  margin-top: -1rem;
+}
+
+@media (max-width: 1080px) {
+  .ed__grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .ed__stage {
+    width: 100%;
+    margin-left: 0;
+    padding: 2.5rem 0 3.5rem;
+  }
+
+  .ed__float--1 { right: 2%; }
+  .ed__float--2 { left: -2%; }
+  .ed__float--3 { right: 4%; }
+  .ed__float--4 { left: 6%; }
+}

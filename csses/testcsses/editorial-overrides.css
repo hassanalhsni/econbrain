@@ -1,0 +1,59 @@
+/**
+ * testindex.html — Editorial parallax layering & scale
+ */
+
+#editorial {
+  position: relative;
+  z-index: 40;
+  overflow: visible;
+}
+
+#editorial .ed__visual {
+  position: relative;
+  z-index: 50;
+}
+
+#editorial .ed__stage {
+  z-index: 51;
+  width: 96%;
+}
+
+#editorial .ed__img {
+  position: relative;
+  z-index: 52;
+  width: 92%;
+  margin: 0 auto;
+}
+
+#editorial .ed__float {
+  z-index: 55;
+  width: clamp(72px, 18vw, 138px);
+}
+
+#editorial .ed__float--2 {
+  width: clamp(60px, 15vw, 115px);
+}
+
+#editorial .ed__float--3 {
+  width: clamp(80px, 20vw, 148px);
+}
+
+#editorial .ed__float--4 {
+  width: clamp(68px, 17vw, 128px);
+}
+
+/* Keep copy under floating parallax layers */
+#editorial .ed__grid > div:not(.ed__visual) {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 1080px) {
+  #editorial .ed__stage {
+    width: 100%;
+  }
+
+  #editorial .ed__img {
+    width: 94%;
+  }
+}

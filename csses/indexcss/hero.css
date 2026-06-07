@@ -1,0 +1,215 @@
+/**
+ * index.html — Hero
+ */
+
+#hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  /* EDGE — bottom: distance from section bottom border to description + button */
+  padding-bottom: 9vh;
+  /* EDGE — top: distance from section top border to heading (also clears fixed header) */
+  padding-top: 72px;
+  overflow: hidden;
+  background: var(--black);
+}
+
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero__bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  filter: grayscale(0.65) brightness(0.38) contrast(1.05);
+}
+
+.hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(10, 10, 10, 0.25) 0%,
+    rgba(10, 10, 10, 0.15) 35%,
+    rgba(10, 10, 10, 0.75) 72%,
+    rgba(10, 10, 10, 1) 100%
+  );
+}
+
+/* ── Edge spacing (desktop) ──────────────────────────────────────
+   Heading + description share padding-left (left border).
+   Button uses padding-right (right border).
+   Change values below; mobile overrides are in the 600px media query. */
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  /* EDGE — left: distance from section left border to heading + description */
+  padding-left: 42px;
+  /* EDGE — right: distance from section right border to button */
+  padding-right: 42px;
+  padding-top: 12px;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
+  min-height: calc(100vh - 72px - 9vh);
+  gap: 2rem 4rem;
+}
+
+.hero__h {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: start;
+  justify-self: start;
+  max-width: none;
+  font-size: clamp(3.75rem, 6vw, 5.25rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  margin: 0;
+  /* Optional: extra nudge from left border (adds to .hero__content padding-left) */
+  /* margin-left: 0; */
+}
+
+.hero__h .l1 {
+  display: block;
+  color: var(--white);
+}
+
+.hero__h .l2 {
+  display: block;
+  color: var(--white);
+}
+
+.hero__h .l3 {
+  display: block;
+  color: var(--accent);
+}
+
+.hero__desc {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  justify-self: start;
+  max-width: none;
+  margin: 0;
+  /* Optional: extra nudge from left border (adds to .hero__content padding-left) */
+  /* margin-left: 0; */
+  font-size: clamp(0.9375rem, 1.4vw, 1.05rem);
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  line-height: 1.75;
+}
+
+/* Desktop: foot wrapper is transparent so desc + button keep grid placement */
+.hero__foot {
+  display: contents;
+}
+
+.hero__ctas {
+  grid-column: 2;
+  grid-row: 2;
+  align-self: end;
+  justify-self: end;
+  display: flex;
+  gap: 1rem;
+  flex-shrink: 0;
+  /* Optional: extra nudge from right border (adds to .hero__content padding-right) */
+  /* margin-right: 0; */
+}
+
+/* Mobile — stacked column layout (heading, then description, then full-width CTA) */
+@media (max-width: 1080px) {
+  .hero__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: calc(100vh - 72px - 9vh);
+    gap: 0;
+    /* EDGE — left / right on tablet & mobile (wrap-style inset) */
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+
+  .hero__h {
+    grid-column: unset;
+    grid-row: unset;
+    align-self: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .hero__foot {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .hero__desc {
+    grid-column: unset;
+    grid-row: unset;
+    align-self: auto;
+  }
+
+  .hero__ctas {
+    grid-column: unset;
+    grid-row: unset;
+    align-self: auto;
+    justify-self: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  #hero {
+    min-height: 88vh;
+    /* EDGE — top / bottom on small screens (overrides #hero values above) */
+    padding-top: 56px;
+    padding-bottom: 4vh;
+  }
+
+  .hero__content {
+    /* EDGE — left / right on small screens (overrides .hero__content values above) */
+    padding-left: 1.15rem;
+    padding-right: 1.15rem;
+  }
+
+  .hero__h {
+    font-size: clamp(1.75rem, 7vw, 2.5rem);
+    margin-bottom: 1.5rem;
+    line-height: 1;
+  }
+
+  .hero__desc {
+    max-width: 100%;
+    font-size: 1rem;
+    text-align: left;
+  }
+
+  .hero__foot {
+    gap: 1.1rem;
+  }
+
+  .hero__ctas {
+    flex-direction: column;
+    gap: 0.7rem;
+    width: 100%;
+  }
+
+  .hero__ctas .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}

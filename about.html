@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About — EconBrain | Strategic Intelligence & Transformation Consultancy</title>
+  <meta name="description" content="EconBrain is a strategic intelligence institution bridging economic research, policy advisory, and transformation consulting across the GCC and MENA region.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="csses/commoncss/contact-cta.css">
+  <link rel="stylesheet" href="csses/commoncss/header.css">
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       ABOUT PAGE — INTERNAL STYLES
+       Designed to match EconBrain ecosystem while asserting
+       its own editorial personality.
+       ═══════════════════════════════════════════════════════════════ */
+
+    /* ─── RESET ─────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    * { border-radius: 0 !important; }
+
+    /* ─── TOKENS (mirrored from base.css) ───────────────────────── */
+    :root {
+      --black: #0a0a0a;
+      --dark: #111111;
+      --darker: #1a1a1a;
+      --white: #ffffff;
+      --cream: #f0ede8;
+      --g100: #e5e5e5;
+      --g400: #888888;
+      --g600: #111111;
+      --accent: #0047ff;
+      --acc2: #0039cc;
+      --border: #1f1f1f;
+      --borderL: #2a2a2a;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    html {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────────── */
+    .wrap {
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    .wrap--sm {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 5vw;
+    }
+
+    /* ─── BUTTONS ────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      border: none;
+      font-family: inherit;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+    }
+
+    .btn--blue {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn--blue:hover { background: var(--acc2); }
+
+    .btn--white {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--white);
+    }
+    .btn--white:hover {
+      background: var(--white);
+      color: var(--black);
+    }
+
+    .btn--dark {
+      background: transparent;
+      color: var(--black);
+      border: 1px solid var(--black);
+    }
+    .btn--dark:hover {
+      background: var(--black);
+      color: var(--white);
+    }
+
+    .btn--sm { padding: 0.75rem 1.5rem; }
+
+    /* ─── EYEBROW ────────────────────────────────────────────────── */
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .eyebrow__line {
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .eyebrow__line--dark { background: var(--black); }
+
+    .eyebrow__text {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+    }
+
+    .eyebrow__text--gray { color: var(--g400); }
+    .eyebrow__text--dark { color: var(--g600); }
+
+   
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 1 — HERO (About page personality: darker, more
+       monumental, architectural framing)
+       ═══════════════════════════════════════════════════════════════ */
+    #about-hero {
+      position: relative;
+      min-height: 50vh;
+      display: flex;
+      align-items: flex-end;
+      padding: clamp(6rem, 12vh, 10rem) 0 clamp(4rem, 8vh, 6rem);
+      overflow: hidden;
+    }
+
+    .about-hero__bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .about-hero__bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: grayscale(0.85) brightness(0.22) contrast(1.15);
+      transform: scale(1.02);
+    }
+
+    .about-hero__overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(10,10,10,0.4) 0%,
+        rgba(10,10,10,0.75) 50%,
+        rgba(10,10,10,0.96) 100%
+      );
+    }
+
+    .about-hero__content {
+      position: relative;
+      z-index: 2;
+      max-width: 1100px;
+    }
+
+    .about-hero__h {
+      padding-top: 20px;
+      font-size: clamp(2.8rem, 5.5vw, 6.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.035em;
+      line-height: 0.9;
+      margin-bottom: 2.5rem;
+    }
+
+    .about-hero__h span {
+      display: block;
+    }
+
+    .about-hero__h em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .about-hero__desc {
+      font-size: clamp(0.9375rem, 1.3vw, 1.125rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      max-width: 560px;
+      margin-bottom: 3rem;
+    }
+
+    .about-hero__ctas {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 1b — INTRODUCTION (staggered editorial layout)
+       ═══════════════════════════════════════════════════════════════ */
+    #about-intro,
+    #vmv,
+    #who-we-are {
+      --vmv-card-h: clamp(22rem, 34vw, 28rem);
+      --vmv-straddle: calc(var(--vmv-card-h) / 2);
+    }
+
+    #about-intro {
+      background: #000000;
+      padding: clamp(5rem, 11vw, 9rem) 0 calc(clamp(5.5rem, 12vw, 10rem) + var(--vmv-straddle));
+      border-bottom: none;
+    }
+
+    .intro__grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: clamp(1rem, 2vw, 1.5rem);
+      row-gap: clamp(2.5rem, 5vw, 4rem);
+    }
+
+    .intro__headline {
+      grid-row: 1;
+      grid-column: 4 / -1;
+      font-size: clamp(1.75rem, 3.6vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--white);
+      max-width: 52rem;
+    }
+
+    .intro__headline em {
+      font-style: normal;
+      color: #0047ff;
+    }
+
+    .intro__body {
+      grid-row: 2;
+      grid-column: 6 / -1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.75rem;
+      max-width: 38rem;
+    }
+
+    .intro__body p {
+      font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+      font-weight: 400;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, 0.88);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 1c — VALUES / MISSION / VISION (bridge between intro & who)
+       ═══════════════════════════════════════════════════════════════ */
+    #vmv {
+      position: relative;
+      z-index: 2;
+      margin-top: calc(-1 * var(--vmv-straddle));
+      margin-bottom: calc(-1 * var(--vmv-straddle));
+    }
+
+    .vmv__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1.25rem, 2vw, 1.75rem);
+    }
+
+    .vmv__card {
+      min-height: var(--vmv-card-h);
+      padding: clamp(2.5rem, 4.5vw, 4rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background: #b5bfd7;
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      position: relative;
+    }
+
+    .vmv__card--highlight {
+      background: #8fa7e5;
+      border-color: rgba(0, 0, 0, 0.04);
+      z-index: 2;
+    }
+
+    .vmv__icon {
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+    }
+
+    .vmv__icon svg {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .vmv__copy {
+      display: flex;
+      flex-direction: column;
+      gap: 0.875rem;
+      max-width: 28ch;
+    }
+
+    .vmv__card-h {
+      font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      color: var(--black);
+    }
+
+    .vmv__card-p {
+      font-size: clamp(0.875rem, 1.05vw, 0.9375rem);
+      font-weight: 400;
+      line-height: 1.65;
+      color: black;
+    }
+
+    @media (min-width: 901px) {
+      .vmv__card + .vmv__card {
+        margin-left: clamp(-1.25rem, -1.8vw, -0.75rem);
+      }
+
+      .vmv__card:nth-child(1) { z-index: 1; }
+      .vmv__card:nth-child(2) { z-index: 3; }
+      .vmv__card:nth-child(3) { z-index: 2; }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 2 — WHO WE ARE (2-col editorial: title + image | intro + rows)
+       ═══════════════════════════════════════════════════════════════ */
+    #who-we-are {
+      background: #faf8f5;
+      margin-top: calc(-1 * var(--vmv-straddle));
+      padding: calc(clamp(5rem, 10vw, 8rem) + var(--vmv-straddle)) 0 clamp(6rem, 11vw, 9rem);
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+
+    .who__layout {
+      display: grid;
+      grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+      gap: clamp(2.5rem, 5.5vw, 5rem);
+      align-items: start;
+    }
+
+    .who__left {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(1.75rem, 3.5vw, 2.75rem);
+    }
+
+    .who__title {
+      font-size: clamp(1.25rem, 2.1vw, 1.625rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.25;
+      color: var(--black);
+      max-width: 18ch;
+    }
+
+    .who__title-mark {
+      color: var(--g400);
+      font-weight: 500;
+    }
+
+    .who__title em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .who__figure {
+      margin: 0;
+      width: 100%;
+    }
+
+    .who__figure img {
+      width: 100%;
+      aspect-ratio: 1 / 0.95;
+      object-fit: cover;
+      object-position: center 35%;
+      filter: grayscale(1) contrast(1.08) brightness(0.92);
+    }
+
+    @media (min-width: 1081px) {
+      .who__layout { align-items: stretch; }
+      .who__figure { margin-top: auto; }
+    }
+
+    .who__right {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 4vw, 3rem);
+      padding-top: 0.125rem;
+    }
+
+    .who__lead {
+      font-size: clamp(0.9375rem, 1.2vw, 1.0625rem);
+      font-weight: 400;
+      color: var(--g600);
+      line-height: 1.8;
+      max-width: 52ch;
+    }
+
+    .who__rows {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .who__row {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+      align-items: start;
+      padding: clamp(1.125rem, 2vw, 1.5rem) 0;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .who__row:first-child {
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .who__row-head {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .who__row-num {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      color: var(--g400);
+      line-height: 1;
+    }
+
+    .who__row-h {
+      font-size: clamp(0.9375rem, 1.15vw, 1.0625rem);
+      font-weight: 700;
+      color: var(--black);
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+    }
+
+    .who__row-p {
+      font-size: clamp(0.8125rem, 1vw, 0.9375rem);
+      font-weight: 400;
+      color: var(--g600);
+      line-height: 1.7;
+    }
+
+    .who__cta {
+      margin-top: clamp(0.5rem, 2vw, 1.25rem);
+    }
+
+    .who__reveal {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+
+    .who__reveal.is-in {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .who__reveal--d1 { transition-delay: 0.08s; }
+    .who__reveal--d2 { transition-delay: 0.16s; }
+    .who__reveal--d3 { transition-delay: 0.24s; }
+    .who__reveal--d4 { transition-delay: 0.32s; }
+    .who__reveal--d5 { transition-delay: 0.4s; }
+
+  
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 4 — HOW WE OPERATE (vertical timeline)
+       ═══════════════════════════════════════════════════════════════ */
+    #how-we-operate {
+      background: var(--black);
+      padding: clamp(5rem, 10vw, 8.5rem) 0;
+    }
+
+    .hwo__header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: end;
+      margin-bottom: clamp(3.5rem, 7vw, 5.5rem);
+      padding-bottom: clamp(2rem, 4vw, 3rem);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hwo__h {
+      font-size: clamp(1.75rem, 3.5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.08;
+      color: var(--white);
+    }
+
+    .hwo__h em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .hwo__sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.75;
+      max-width: 42ch;
+      justify-self: end;
+    }
+
+    .hwo__timeline {
+      position: relative;
+      padding-left: 3.5rem;
+    }
+
+    .hwo__timeline::before {
+      content: '';
+      position: absolute;
+      left: 0.65rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 1px;
+      background: var(--borderL);
+    }
+
+    .hwo__step {
+      position: relative;
+      margin-left: -1rem;
+      padding: 1.25rem 1.25rem clamp(2.5rem, 4vw, 3.5rem) 1.25rem;
+      overflow: visible;
+      transition: box-shadow 0.55s var(--ease), background 0.55s var(--ease);
+    }
+
+    .hwo__step:last-child {
+      padding-bottom: 1.25rem;
+    }
+
+ 
+
+    .hwo__step-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: clamp(1rem, 2.5vw, 2rem);
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .hwo__step-copy {
+      min-width: 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hwo__step-visuals {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      overflow: hidden;
+      max-width: 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: max-width 0.75s var(--ease), opacity 0.45s var(--ease);
+    }
+
+    .hwo__step.is-active .hwo__step-visuals {
+      max-width: min(420px, 42vw);
+      opacity: 1;
+    }
+
+    .hwo__step-img {
+      flex-shrink: 0;
+      width: clamp(72px, 9vw, 112px);
+      height: clamp(88px, 11vw, 136px);
+      object-fit: cover;
+      border: 1px solid var(--borderL);
+      background: var(--darker);
+      opacity: 0;
+      transform: translateX(-120%);
+      transition: transform 0.7s var(--ease), opacity 0.5s var(--ease);
+    }
+
+    .hwo__step.is-active .hwo__step-img:nth-child(1) {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.1s;
+    }
+
+    .hwo__step.is-active .hwo__step-img:nth-child(2) {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.22s;
+    }
+
+    .hwo__step.is-active .hwo__step-img:nth-child(3) {
+      opacity: 1;
+      transform: translateX(0);
+      transition-delay: 0.34s;
+    }
+
+    .hwo__step::before {
+      content: '';
+      position: absolute;
+      left: -2.5rem;
+      top: 50%;
+      width: 12px;
+      height: 12px;
+      background: var(--black);
+      border: 2px solid var(--accent);
+      transform: translate(-50%, -50%);
+      margin-left: 0.65rem;
+      z-index: 3;
+      pointer-events: none;
+      transition: box-shadow 0.55s var(--ease),
+                  background 0.55s var(--ease),
+                  border-color 0.55s var(--ease),
+                  transform 0.55s var(--ease);
+    }
+
+    .hwo__step.is-active::before {
+      background: var(--accent);
+      border-color: #3d7bff;
+      transform: translate(-50%, -50%) scale(1.15);
+      box-shadow:
+        0 0 0 3px rgba(0, 71, 255, 0.35),
+        0 0 16px 4px rgba(0, 71, 255, 0.75),
+        0 0 40px 12px rgba(0, 71, 255, 0.45),
+        0 0 72px 24px rgba(0, 71, 255, 0.2);
+    }
+
+    .hwo__num {
+      font-size: 0.5625rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      display: block;
+      transition: color 0.4s var(--ease), text-shadow 0.4s var(--ease);
+    }
+
+    .hwo__step.is-active .hwo__num {
+      color: #5c8fff;
+      text-shadow: 0 0 20px rgba(0, 71, 255, 0.6);
+    }
+
+    .hwo__step-h {
+      font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.25;
+      transition: color 0.4s var(--ease);
+    }
+
+    .hwo__step.is-active .hwo__step-h {
+      color: #fff;
+    }
+
+    .hwo__step-p {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.75;
+      max-width: 52ch;
+      transition: color 0.4s var(--ease);
+    }
+
+    .hwo__step.is-active .hwo__step-p {
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hwo__step-visuals,
+      .hwo__step-img {
+        transition: none;
+      }
+      .hwo__step.is-active .hwo__step-img {
+        transform: none;
+        transition-delay: 0s;
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 5 — FOUNDER (editorial two-column)
+       ═══════════════════════════════════════════════════════════════ */
+    #founder {
+      background: #faf8f5;
+      padding: clamp(5.5rem, 11vw, 9.5rem) 0;
+    }
+
+    .founder__grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+      gap: clamp(3.5rem, 7vw, 6.5rem);
+      align-items: start;
+    }
+
+    .founder__vis {
+      position: sticky;
+      top: 100px;
+      align-self: start;
+      max-width: clamp(220px, 28vw, 320px);
+    }
+
+    .founder__portrait {
+      line-height: 0;
+    }
+
+    .founder__img {
+      width: 100%;
+      aspect-ratio: 4/5;
+      object-fit: cover;
+      object-position: center top;
+      filter: grayscale(0.15) contrast(1.02);
+    }
+
+    .founder__meta {
+      display: flex;
+      gap: clamp(2rem, 4vw, 3.5rem);
+      margin-top: clamp(1.5rem, 3vw, 2.25rem);
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .founder__meta-item {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--g600);
+    }
+
+    .founder__meta-item strong {
+      display: block;
+      font-size: clamp(1.25rem, 2vw, 1.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      text-transform: none;
+      color: var(--black);
+      margin-bottom: 0.35rem;
+    }
+
+    .founder__content {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      text-align: left;
+      padding-top: 0.25rem;
+    }
+
+    .founder__intro {
+      width: 100%;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+      padding-bottom: clamp(1.75rem, 3.5vw, 2.5rem);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .founder__name {
+      font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.02;
+      color: var(--black);
+      margin-bottom: 0.65rem;
+    }
+
+    .founder__role {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--g600);
+      margin: 0;
+    }
+
+    .founder__stmt {
+      font-size: clamp(1rem, 1.25vw, 1.125rem);
+      font-weight: 400;
+      color: var(--g600);
+      line-height: 1.8;
+      margin-bottom: clamp(2.75rem, 5vw, 4rem);
+      max-width: 46ch;
+    }
+
+    .founder__blocks {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(2rem, 3.5vw, 2.75rem);
+      width: 100%;
+      margin-bottom: clamp(3rem, 5.5vw, 4.5rem);
+    }
+
+    .founder__block-k {
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      line-height: 1.45;
+      color: var(--black);
+      margin-bottom: 0.65rem;
+      max-width: 42ch;
+    }
+
+    .founder__block-p {
+      font-size: 0.9375rem;
+      font-weight: 400;
+      color: var(--g600);
+      line-height: 1.8;
+      max-width: 52ch;
+    }
+
+    .founder__quote {
+      width: 100%;
+      padding-top: clamp(2rem, 3.5vw, 2.75rem);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .founder__quote p {
+      font-size: clamp(1rem, 1.2vw, 1.0625rem);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--black);
+      line-height: 1.75;
+      margin-bottom: 1rem;
+      max-width: 44ch;
+    }
+
+    .founder__quote cite {
+      font-size: 0.6875rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--g600);
+      font-style: normal;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 6 — CAPABILITIES (spec-sheet rows, not services grid)
+       ═══════════════════════════════════════════════════════════════ */
+    #capabilities {
+      background: var(--darker);
+      padding: clamp(5rem, 10vw, 8.5rem) 0;
+    }
+
+    .cap__header {
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .cap__h {
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.1;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .cap__h em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .cap__sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.7;
+      max-width: 50ch;
+    }
+
+    .cap__rows {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cap__row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 2fr);
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+      align-items: start;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: padding-left 0.35s var(--ease);
+    }
+
+    .cap__row:first-child { border-top: 1px solid var(--border); }
+
+    .cap__row:hover {
+      cursor: var(--cap-cursor, pointer);
+    }
+
+    .cap__row-head {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+
+    .cap__row-num {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      line-height: 1;
+    }
+
+    .cap__row-h {
+      font-size: clamp(1.35rem, 2.4vw, 2.125rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+    }
+
+    .cap__row-p {
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.45);
+      line-height: 1.65;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 7 — IMPACT (accent strip; not index #stats)
+       ═══════════════════════════════════════════════════════════════ */
+    #numbers {
+      background: var(--accent);
+      padding: clamp(3.5rem, 7vw, 5.5rem) 0;
+    }
+
+    .num__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .num__item {
+      text-align: left;
+      padding-left: clamp(0rem, 2vw, 1.5rem);
+      border-left: 1px solid rgba(255,255,255,0.25);
+    }
+
+    .num__item:first-child {
+      padding-left: 0;
+      border-left: none;
+    }
+
+    .num__n {
+      font-size: clamp(2.25rem, 5vw, 3.75rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+    }
+
+    .num__n em {
+      color: rgba(255,255,255,0.7);
+      font-style: normal;
+    }
+
+    .num__l {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.45;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 8 — FINAL CTA (split band; not index #contact)
+       ═══════════════════════════════════════════════════════════════ */
+    #final-cta {
+      background: #faf8f5;
+      padding: clamp(4rem, 8vw, 6rem) 0;
+      border-top: 1px solid rgba(0,0,0,0.08);
+      position: relative;
+    }
+
+    #final-cta .wrap {
+      position: relative;
+      z-index: 1;
+    }
+
+    #final-cta .outline-text {
+      position: absolute;
+      right: 5vw;
+      bottom: -35px;
+      font-size: 280px;
+      font-weight: 900;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--accent);
+      line-height: 1;
+      white-space: nowrap;
+      pointer-events: none;
+      user-select: none;
+      z-index: 0;
+    }
+
+    .fcta__split {
+      display: grid;
+      grid-template-columns: 1.2fr auto;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .fcta__h {
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      line-height: 1.12;
+      color: var(--black);
+      margin-bottom: 0.75rem;
+    }
+
+    .fcta__h em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .fcta__sub {
+      font-size: 1rem;
+      font-weight: 400;
+      color: var(--g600);
+      line-height: 1.7;
+      max-width: 42ch;
+    }
+
+    .fcta__action {
+      flex-shrink: 0;
+    }
+
+    @media (min-width: 1081px) {
+      .fcta__split {
+        align-items: end;
+      }
+
+      .fcta__action {
+        transform: translateX(-8.5rem);
+      }
+    }
+
+    @media (max-width: 720px) {
+      #final-cta .outline-text {
+        font-size: 80px;
+        bottom: 0;
+        -webkit-text-stroke: 1px var(--accent);
+      }
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       FOOTER (minimal, matching index ecosystem)
+       ═══════════════════════════════════════════════════════════════ */
+    #footer {
+      background: var(--black);
+      border-top: 1px solid var(--border);
+      padding: 3rem 0;
+    }
+
+    .footer__inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .footer__copy {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      color: var(--g600);
+      letter-spacing: 0.05em;
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer__a {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--g400);
+      transition: color 0.2s;
+    }
+
+    .footer__a:hover { color: var(--white); }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════════ */
+    @media (max-width: 1080px) {
+      .who__layout {
+        grid-template-columns: 1fr;
+        gap: clamp(2.5rem, 6vw, 3.5rem);
+      }
+      .who__figure img { aspect-ratio: 16 / 11; }
+      .who__right { padding-top: 0; }
+      .hwo__header { grid-template-columns: 1fr; }
+      .hwo__sub { justify-self: start; }
+      .hwo__step-body { grid-template-columns: 1fr; }
+      .hwo__step-visuals {
+        --hwo-visual-h: 180px;
+        --hwo-visual-pad: 1.25rem;
+        max-width: none;
+        width: 100%;
+        min-height: calc(var(--hwo-visual-h) + var(--hwo-visual-pad));
+        padding-top: var(--hwo-visual-pad);
+        opacity: 1;
+        overflow: hidden;
+        justify-content: flex-start;
+        transition: none;
+      }
+      .hwo__step.is-active .hwo__step-visuals {
+        max-width: none;
+      }
+      .hwo__step-img {
+        width: 88px;
+        height: 108px;
+      }
+      .founder__grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .founder__vis { position: static; max-width: min(100%, 300px); }
+      .founder__content { padding-top: 0; }
+      .cap__row {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      .num__grid { grid-template-columns: repeat(2, 1fr); }
+      .num__item { border-left: none; padding-left: 0; }
+      .fcta__split { grid-template-columns: 1fr; }
+      .eq__wrap { grid-template-columns: 3rem 1fr; }
+      .intro__headline { grid-row: 1; grid-column: 3 / -1; }
+      .intro__body { grid-row: 2; grid-column: 4 / -1; }
+      #about-intro,
+      #vmv,
+      #who-we-are { --vmv-card-h: clamp(20rem, 42vw, 24rem); }
+      .vmv__grid { grid-template-columns: 1fr; }
+      .vmv__card + .vmv__card { margin-left: 0; }
+      .vmv__copy { max-width: none; }
+    }
+
+    @media (max-width: 600px) {
+      .who__row {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+      }
+      .cap__row { gap: 0.5rem; }
+      .num__grid { grid-template-columns: repeat(2, 1fr); }
+      .num__item { border-left: none !important; padding-left: 0 !important; }
+      .about-hero__ctas { flex-direction: column; }
+      .about-hero__ctas .btn { width: 100%; justify-content: center; }
+      .intro__headline { grid-row: 1; grid-column: 1 / -1; }
+      .intro__body { grid-row: 2; grid-column: 1 / -1; max-width: none; }
+      #about-intro,
+      #vmv,
+      #who-we-are { --vmv-card-h: clamp(18rem, 52vw, 22rem); }
+      .vmv__grid { gap: clamp(1rem, 4vw, 1.25rem); }
+      .eq__wrap { grid-template-columns: 1fr; }
+      .eq__mark { display: none; }
+      .eq__blockquote { padding-left: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header id="hdr">
+  <div class="wrap">
+    <div class="hdr__inner">
+
+      <a href="#" class="logo">
+        <span class="logo__mark">ECONBRAIN</span>
+        <span class="logo__sub">Feasibility Studies Consultancies</span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav__a">Home</a>
+        <a href="about.html" class="nav__a">About</a>
+
+        <div class="nav__drop">
+          <button class="nav__drop-trigger">Services</button>
+          <div class="dropdown">
+          
+            <div class="dropdown__grid">
+
+              <!-- 01 AI & Innovation -->
+              <a href="services/ai.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10"/><path d="M9 7V5M12 7V5M15 7V5M9 17v2M12 17v2M15 17v2M7 9H5M7 12H5M7 15H5M17 9h2M17 12h2M17 15h2"/><rect x="9" y="9" width="6" height="6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">01</span><span class="dd-item__name">Innovation &amp; Artificial Intelligence Research &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 02 Quality -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">02</span><span class="dd-item__name">Quality &amp; Standardization Consultants</span></span>
+              </a>
+
+              <!-- 03 Marketing Research -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M8 20V12M12 20V8M16 20V4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">03</span><span class="dd-item__name">Marketing Research &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 04 Human Resources -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.5"/><path d="M20 20c0-2.8-1.8-5.2-4-6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">04</span><span class="dd-item__name">Human Resources Consultancies</span></span>
+              </a>
+
+              <!-- 05 Project Development -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/><rect x="9" y="14" width="6" height="7"/><path d="M9 11h.01M15 11h.01"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">05</span><span class="dd-item__name">Project Development Consultant</span></span>
+              </a>
+
+              <!-- 06 Management -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="13"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M2 13h20"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">06</span><span class="dd-item__name">Management Consultancies</span></span>
+              </a>
+
+              <!-- 07 Facilities Planning -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">07</span><span class="dd-item__name">Facilities Resources Planning Consultancy</span></span>
+              </a>
+
+              <!-- 08 Advertising -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6l-8 4H5a2 2 0 00-2 2v2a2 2 0 002 2h1l1.5 4h2L8 16h2l8 4v-2"/><path d="M18 8c1 .5 2 1.5 2 4s-1 3.5-2 4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">08</span><span class="dd-item__name">Advertising Researches &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 09 Media Studies -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14"/><path d="M2 9h20M2 15h20M7 5V3M12 5V3M17 5V3M7 19v2M12 19v2M17 19v2"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">09</span><span class="dd-item__name">Media Studies &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 10 Feasibility Studies -->
+              <a href="#" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5M10 9H8"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">10</span><span class="dd-item__name">Feasibility Studies Consultancies</span></span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="nav__a">Insights</a>
+        <a href="contact.html" class="nav__a">Contact</a>
+      </nav>
+
+      <div class="hdr__actions">
+        <button class="hamburger" onclick="openNav()" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="m-nav" id="mNav">
+  <button class="m-nav__close" onclick="closeNav()">✕</button>
+  <a href="index.html" class="m-nav__a" onclick="closeNav()">Home</a>
+  <a href="about.html" class="m-nav__a" onclick="closeNav()">About</a>
+
+  <div class="m-nav__drop" id="mNavServicesDrop">
+    <button class="m-nav__drop-btn" onclick="toggleMobileServices()">
+      Services
+      <svg class="m-nav__drop-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    </button>
+    <div class="m-nav__services">
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10"/><path d="M9 7V5M12 7V5M15 7V5M9 17v2M12 17v2M15 17v2M7 9H5M7 12H5M7 15H5M17 9h2M17 12h2M17 15h2"/><rect x="9" y="9" width="6" height="6"/></svg></span>Innovation &amp; Artificial Intelligence Research &amp; Consultancies</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>Quality &amp; Standardization Consultants</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M8 20V12M12 20V8M16 20V4"/></svg></span>Marketing Research &amp; Consultancies</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.5"/><path d="M20 20c0-2.8-1.8-5.2-4-6"/></svg></span>Human Resources Consultancies</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/><rect x="9" y="14" width="6" height="7"/><path d="M9 11h.01M15 11h.01"/></svg></span>Project Development Consultant</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="13"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M2 13h20"/></svg></span>Management Consultancies</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>Facilities Resources Planning Consultancy</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6l-8 4H5a2 2 0 00-2 2v2a2 2 0 002 2h1l1.5 4h2L8 16h2l8 4v-2"/><path d="M18 8c1 .5 2 1.5 2 4s-1 3.5-2 4"/></svg></span>Advertising Researches &amp; Consultancies</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14"/><path d="M2 9h20M2 15h20M7 5V3M12 5V3M17 5V3M7 19v2M12 19v2M17 19v2"/></svg></span>Media Studies &amp; Consultancies</a>
+      <a href="#" class="m-nav__service" onclick="closeNav()"><span class="m-nav__service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5M10 9H8"/></svg></span>Feasibility Studies Consultancies</a>
+    </div>
+  </div>
+
+  <a href="#" class="m-nav__a" onclick="closeNav()">Insights</a>
+  <a href="contact.html" class="m-nav__a" onclick="closeNav()">Contact</a>
+</nav>
+
+<main>
+
+<!-- ════════════════════ SECTION 1 — HERO ════════════════════ -->
+<section id="about-hero">
+  <div class="about-hero__bg">
+    <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format&fit=crop" alt="Strategic architecture — the foundation of economic intelligence" loading="eager">
+  </div>
+  <div class="about-hero__overlay"></div>
+  <div class="wrap about-hero__content">
+    <h1 class="about-hero__h">
+      <span>  BEFORE ECONBRAIN, </span>
+      <span>THERE WAS EXPERIENCE</span>
+    </h1>
+
+    <div class="about-hero__ctas">
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SECTION 1b — INTRODUCTION ════════════════════ -->
+<section id="about-intro">
+  <div class="wrap">
+    <div class="intro__grid">
+      <h2 class="intro__headline">
+        At EconBrain, <em>we specialize in providing strategic intelligence and advisory services</em> tailored to the unique needs of institutions across the GCC and MENA.
+      </h2>
+      <div class="intro__body">
+        <p>With deep industry expertise and a commitment to excellence, we offer comprehensive solutions that empower organizations to grow, expand, and thrive in an increasingly competitive market.</p>
+        <p>Our advisory portfolio spans economic intelligence, policy advisory, and transformation consulting — each designed to address critical challenges and unlock new opportunities for your institution.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SECTION 1c — VALUES / MISSION / VISION ════════════════════ -->
+<section id="vmv" aria-label="Values, mission, and vision">
+  <div class="wrap">
+    <div class="vmv__grid">
+      <article class="vmv__card">
+        <div class="vmv__icon" aria-hidden="true">
+          <svg width="100%" height="100%" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="15.5735" x2="12.3529" y2="15.5735" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="17.6484" y1="15.5735" x2="30.0014" y2="15.5735" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="15.5703" y1="12.3529" x2="15.5703" y2="-3.62396e-05" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="15.5703" y1="30" x2="15.5703" y2="17.6471" stroke="#272727" stroke-width="1.5"></line>
+          </svg>
+        </div>
+        <div class="vmv__copy">
+          <h3 class="vmv__card-h">Values</h3>
+          <p class="vmv__card-p">Rigor, integrity, and intellectual honesty in every engagement we undertake.</p>
+        </div>
+      </article>
+      <article class="vmv__card vmv__card--highlight">
+        <div class="vmv__icon" aria-hidden="true">
+          <svg width="100%" height="100%" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="15.5735" x2="12.3529" y2="15.5735" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="17.6484" y1="15.5735" x2="30.0014" y2="15.5735" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="15.5703" y1="12.3529" x2="15.5703" y2="-3.62396e-05" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="15.5703" y1="30" x2="15.5703" y2="17.6471" stroke="#272727" stroke-width="1.5"></line>
+          </svg>
+        </div>
+        <div class="vmv__copy">
+          <h3 class="vmv__card-h">Mission</h3>
+          <p class="vmv__card-p">Deliver strategic intelligence that enables institutions to act with clarity and conviction.</p>
+        </div>
+      </article>
+      <article class="vmv__card">
+        <div class="vmv__icon" aria-hidden="true">
+          <svg width="100%" height="100%" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <line y1="15.5735" x2="12.3529" y2="15.5735" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="17.6484" y1="15.5735" x2="30.0014" y2="15.5735" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="15.5703" y1="12.3529" x2="15.5703" y2="-3.62396e-05" stroke="#272727" stroke-width="1.5"></line>
+            <line x1="15.5703" y1="30" x2="15.5703" y2="17.6471" stroke="#272727" stroke-width="1.5"></line>
+          </svg>
+        </div>
+        <div class="vmv__copy">
+          <h3 class="vmv__card-h">Vision</h3>
+          <p class="vmv__card-p">Be the region's trusted partner where policy insight and enterprise strategy converge.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SECTION 2 — WHO WE ARE ════════════════════ -->
+<section id="who-we-are">
+  <div class="wrap">
+    <div class="who__layout">
+      <div class="who__left">
+        <h2 class="who__title who__reveal"><span class="who__title-mark">//</span> A strategic <em>intelligence</em> institution.</h2>
+        <figure class="who__figure who__reveal who__reveal--d1">
+          <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=1200&q=80&auto=format&fit=crop" alt="Strategic analysis and institutional intelligence" loading="lazy">
+        </figure>
+      </div>
+      <div class="who__right">
+        <p class="who__lead who__reveal">EconBrain operates where economic research meets strategic execution — at the level where governments design long-term policy and enterprises navigate transformational risk.</p>
+        <div class="who__rows">
+          <article class="who__row who__reveal who__reveal--d1">
+            <div class="who__row-head">
+              <h3 class="who__row-h">Economic Intelligence</h3>
+            </div>
+            <p class="who__row-p">Our research capabilities span macroeconomic modelling, competitive intelligence, and market structure analysis. We do not rely on secondary data or industry reports — we build intelligence from primary sources, institutional relationships, and proprietary analytical frameworks.</p>
+          </article>
+          <article class="who__row who__reveal who__reveal--d2">
+            <div class="who__row-head">
+              <h3 class="who__row-h">Regional Expertise</h3>
+            </div>
+            <p class="who__row-p">Operating across the UAE, GCC, and wider MENA region, we bring decades of accumulated institutional knowledge. Our fluency in local regulatory environments, economic structures, and cultural dynamics is not learned — it is lived.</p>
+          </article>
+          <article class="who__row who__reveal who__reveal--d3">
+            <div class="who__row-head">
+              <h3 class="who__row-h">Strategic Consulting</h3>
+            </div>
+            <p class="who__row-p">We advise sovereign entities, government institutions, and enterprise leadership on decisions that shape economic futures. Our consulting is not theoretical — it is built to survive board-level scrutiny, regulatory examination, and sustained market pressure.</p>
+          </article>
+          <article class="who__row who__reveal who__reveal--d4">
+            <div class="who__row-head">
+              <h3 class="who__row-h">Intelligence-Led Methodology</h3>
+            </div>
+            <p class="who__row-p">Every recommendation begins with comprehensive intelligence gathering. Strategy without intelligence is guesswork; execution without strategy is waste.</p>
+          </article>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════ SECTION 4 — HOW WE OPERATE ════════════════════ -->
+<section id="how-we-operate">
+  <div class="wrap">
+    <div class="hwo__header">
+      <div>
+        <h2 class="hwo__h">How we <em>operate.</em></h2>
+      </div>
+    </div>
+    <div class="hwo__timeline">
+      <article class="hwo__step">
+        <div class="hwo__step-body">
+          <div class="hwo__step-copy">
+            <span class="hwo__num">01</span>
+            <h3 class="hwo__step-h">Research First</h3>
+            <p class="hwo__step-p">Before any strategic recommendation, we construct a complete economic and competitive intelligence picture. Primary data collection, institutional dynamics analysis, market structure mapping, and stress-tested assumptions form the foundation of every engagement.</p>
+          </div>
+          <div class="hwo__step-visuals" aria-hidden="true">
+            <img class="hwo__step-img" width="88" height="108" src="https://thumbs.dreamstime.com/b/business-people-meeting-corporate-analysis-research-office-conce-concept-54825680.jpg" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://investmentu.com/wp-content/uploads/2020/06/how-to-research-stocks.jpg" alt="" loading="lazy">
+          </div>
+        </div>
+      </article>
+      <article class="hwo__step">
+        <div class="hwo__step-body">
+          <div class="hwo__step-copy">
+            <span class="hwo__num">02</span>
+            <h3 class="hwo__step-h">Strategic Precision</h3>
+            <p class="hwo__step-p">Strategy is not about options — it is about decisions. We distill complex intelligence into precise, actionable strategic direction stress-tested against multiple scenarios.</p>
+          </div>
+          <div class="hwo__step-visuals" aria-hidden="true">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+          </div>
+        </div>
+      </article>
+      <article class="hwo__step">
+        <div class="hwo__step-body">
+          <div class="hwo__step-copy">
+            <span class="hwo__num">03</span>
+            <h3 class="hwo__step-h">Policy-Level Thinking</h3>
+            <p class="hwo__step-p">We apply the analytical rigour of policy advisory to private sector challenges — thinking in systems and anticipating second-order effects.</p>
+          </div>
+          <div class="hwo__step-visuals" aria-hidden="true">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1577960118764-b48ff778b548?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+          </div>
+        </div>
+      </article>
+      <article class="hwo__step">
+        <div class="hwo__step-body">
+          <div class="hwo__step-copy">
+            <span class="hwo__num">04</span>
+            <h3 class="hwo__step-h">Execution-Focused Advisory</h3>
+            <p class="hwo__step-p">We translate recommendations into implementation roadmaps, governance frameworks, and performance metrics designed to survive the transition from boardroom to operations.</p>
+          </div>
+          <div class="hwo__step-visuals" aria-hidden="true">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+          </div>
+        </div>
+      </article>
+      <article class="hwo__step">
+        <div class="hwo__step-body">
+          <div class="hwo__step-copy">
+            <span class="hwo__num">05</span>
+            <h3 class="hwo__step-h">Long-Term Transformation</h3>
+            <p class="hwo__step-p">We position as long-term intelligence partners — tracking outcomes, evolving recommendations, and recalibrating strategy as markets and institutions change.</p>
+          </div>
+          <div class="hwo__step-visuals" aria-hidden="true">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+            <img class="hwo__step-img" width="88" height="108" src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=240&h=320&fit=crop&q=80" alt="" loading="lazy">
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+<!-- ════════════════════ SECTION 7 — NUMBERS / IMPACT ════════════════════ -->
+<section id="numbers">
+  <div class="wrap">
+    <div class="num__grid">
+      <div class="num__item">
+        <div class="num__n">25<em>+</em></div>
+        <div class="num__l">Years of Strategic<br>Economic Expertise</div>
+      </div>
+      <div class="num__item">
+        <div class="num__n">40<em>+</em></div>
+        <div class="num__l">Research Papers<br>&amp; Publications</div>
+      </div>
+      <div class="num__item">
+        <div class="num__n">500<em>+</em></div>
+        <div class="num__l">Economic Articles<br>&amp; Analyses</div>
+      </div>
+      <div class="num__item">
+        <div class="num__n">GCC</div>
+        <div class="num__l">Regional &amp; Government<br>Advisory Experience</div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ════════════════════ SECTION 5 — FOUNDER ════════════════════ -->
+<section id="founder">
+  <div class="wrap">
+    <div class="founder__grid">
+      <div class="founder__vis">
+        <div class="founder__portrait">
+          <img src="imgs/sayed.png" alt="Dr. Irfan Al Hasani — Founder &amp; Principal Strategic Advisor" class="founder__img" loading="lazy">
+        </div>
+        <div class="founder__meta">
+          <div class="founder__meta-item"><strong>25+</strong> Years Experience</div>
+          <div class="founder__meta-item"><strong>GCC</strong> Regional Focus</div>
+        </div>
+      </div>
+      <div class="founder__content">
+        <header class="founder__intro">
+          <h2 class="founder__name">Dr. Irfan<br>Al Hasani</h2>
+          <p class="founder__role">Founder &amp; Principal Strategic Advisor</p>
+        </header>
+        <p class="founder__stmt">
+          A career built at the intersection of economic policy, governance architecture, and strategic transformation — advising institutions that shape the long-term future of the Arab world.
+        </p>
+        <div class="founder__blocks">
+          <article class="founder__block">
+            <h3 class="founder__block-k">// Advised institutions shaping the region's economic future.</h3>
+            <p class="founder__block-p">Senior advisory experience at pan-Arab financial and economic institutions, contributing to regional monetary policy and economic stability frameworks.</p>
+          </article>
+          <article class="founder__block">
+            <h3 class="founder__block-k">// Bridging policy intelligence with strategic transformation.</h3>
+            <p class="founder__block-p">Contributed to Dubai's long-term competitiveness frameworks and strategic economic positioning programmes.</p>
+          </article>
+     
+     
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════ SECTION 6 — STRATEGIC CAPABILITIES ════════════════════ -->
+<section id="capabilities">
+  <div class="wrap">
+   
+    <div class="cap__rows">
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">Economic Strategy</h3>
+        </div>
+        <p class="cap__row-p">Macroeconomic analysis, policy advisory, and long-term economic planning for sovereign and institutional clients.</p>
+      </div>
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">AI & Innovation</h3>
+        </div>
+        <p class="cap__row-p">Intelligent decision systems, innovation frameworks, and digital transformation strategy for complex organisations.</p>
+      </div>
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">Transformation Consulting</h3>
+        </div>
+        <p class="cap__row-p">Organisational redesign, change management, and institutional capability building at enterprise scale.</p>
+      </div>
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">Market Intelligence</h3>
+        </div>
+        <p class="cap__row-p">Demand modelling, competitive analysis, and market entry strategy grounded in primary research.</p>
+      </div>
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">Organizational Strategy</h3>
+        </div>
+        <p class="cap__row-p">Governance architecture, leadership frameworks, and human capital strategy for high-performance institutions.</p>
+      </div>
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">Feasibility Advisory</h3>
+        </div>
+        <p class="cap__row-p">Investment validation, economic modelling, and risk assessment before capital deployment.</p>
+      </div>
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">Strategic Research</h3>
+        </div>
+        <p class="cap__row-p">Policy-grade research, white papers, and thought leadership on regional economic dynamics.</p>
+      </div>
+      <div class="cap__row" style="--cap-cursor: url('https://images.unsplash.com/photo-1560250097-0b93528c311a?w=128&amp;h=128&amp;fit=crop&amp;q=80') 64 64, pointer;">
+        <div class="cap__row-head">
+          <h3 class="cap__row-h">Institutional Consulting</h3>
+        </div>
+        <p class="cap__row-p">Government advisory, public-private partnership design, and regulatory strategy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- ════════════════════ SECTION 8 — FINAL CTA ════════════════════ -->
+<section id="final-cta">
+  <span class="outline-text" aria-hidden="true">EB</span>
+  <div class="wrap fcta__split">
+    <div class="fcta__left">
+      <h2 class="fcta__h">Serious decisions require <em>serious strategy.</em></h2>
+      <p class="fcta__sub">If your organisation operates at the level where strategic precision is not optional, we should talk. EconBrain advises leaders who shape economic futures.</p>
+    </div>
+    <div class="fcta__action">
+      <a href="index.html#contact" class="btn btn--blue">Start a Conversation →</a>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+
+
+
+    <div class="contact__info" style="font-size: 1.35rem;">
+      <div>
+        <span class="cinfo__label" style="font-size: 1.1em;">Headquarters</span>
+        <p class="cinfo__val" style="font-size: 1.15em;">Dubai, United Arab Emirates</p>
+      </div>
+      <div>
+        <span class="cinfo__label" style="font-size: 1.1em;">Email</span>
+        <p class="cinfo__val" style="font-size: 1.15em;"><a href="mailto:italhasani@gmail.com" style="font-size: 1em;">italhasani@gmail.com</a></p>
+      </div>
+      <div>
+        <span class="cinfo__label" style="font-size: 1.1em;">Phone</span>
+        <p class="cinfo__val" style="font-size: 1.15em;"><a href="tel:+971506967476" style="font-size: 1em;">+971 50 696 7476</a></p>
+      </div>
+    </div>
+
+  </div>
+</section>
+</main>
+
+<script>
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => {
+    hdr.style.background = window.scrollY > 60
+      ? 'rgba(10,10,10,1)'
+      : 'rgba(10,10,10,.96)';
+  }, { passive: true });
+
+  function openNav() {
+    document.getElementById('mNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    document.getElementById('mNav').classList.remove('open');
+    document.getElementById('mNavServicesDrop').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function toggleMobileServices() {
+    document.getElementById('mNavServicesDrop').classList.toggle('open');
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+
+  /* ── Methodology timeline: light up steps on scroll ── */
+  const timelineSteps = document.querySelectorAll('.hwo__step');
+  const stepObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('is-active', entry.isIntersecting);
+    });
+  }, {
+    threshold: 0.45,
+    rootMargin: '-12% 0px -28% 0px'
+  });
+  timelineSteps.forEach(step => stepObserver.observe(step));
+
+  /* ── Who we are: subtle scroll reveal ── */
+  const whoReveals = document.querySelectorAll('#who-we-are .who__reveal');
+  const whoRevealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        whoRevealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' });
+  whoReveals.forEach(el => whoRevealObserver.observe(el));
+</script>
+</body>
+</html>

@@ -1,0 +1,232 @@
+.sectioncards {
+  --sectioncards-sticky-top: 0;
+  position: relative;
+  isolation: isolate;
+  z-index: 0;
+  background-color: #f0f0f0;
+  color: #0a0a0a;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Grid stays fixed in the viewport while scrolling through this section */
+.sectioncards::before {
+  content: '';
+  display: block;
+  position: sticky;
+  top: var(--sectioncards-sticky-top, 0);
+  left: 0;
+  width: 100%;
+  height: calc(100vh - var(--sectioncards-sticky-top, 0px));
+  margin-bottom: calc(var(--sectioncards-sticky-top, 0px) - 100vh);
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(0, 0, 0, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* ─── WRAPPER ────────────────────────────────────────────── */
+.sectioncards .wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 96px 4vw ;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Section title — sticky so it stays in frame while cards stack below */
+.sectioncards__title {
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.92;
+  color: #0a0a0a;
+  padding-bottom: 2.25rem;
+  padding-top: 1.25rem;
+  position: sticky;
+  top: var(--sectioncards-sticky-top);
+}
+
+@media (max-width: 768px) {
+  .sectioncards__title {
+    font-size: 2rem;
+  }
+}
+
+/* ─── CARD ───────────────────────────────────────────────── */
+.sectioncards .card {
+  position: sticky;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  padding: clamp(2rem, 3.5vw, 3rem) clamp(1.75rem, 4vw, 3.5rem) clamp(4rem, 3.5vw, 3rem) 0;
+  margin-bottom: 16px;
+  overflow: visible;
+  transition: background 0.22s ease;
+  cursor: default;
+}
+
+.sectioncards .card:last-child { margin-bottom: 0; }
+
+
+.sectioncards .card::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: #0047ff;
+  opacity: 0;
+  transition: opacity 0.22s ease;
+}
+
+/* ─── STICKY OFFSETS — cards sit below the sticky title ── */
+.sectioncards .wrapper > .card:nth-of-type(1) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px)); z-index: 1; }
+.sectioncards .wrapper > .card:nth-of-type(2) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px) + 24px); z-index: 2; }
+.sectioncards .wrapper > .card:nth-of-type(3) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px) + 48px); z-index: 3; }
+.sectioncards .wrapper > .card:nth-of-type(4) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px) + 72px); z-index: 4; }
+.sectioncards .wrapper > .card:nth-of-type(5) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px) + 96px); z-index: 5; }
+.sectioncards .wrapper > .card:nth-of-type(6) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px) + 120px); z-index: 6; }
+.sectioncards .wrapper > .card:nth-of-type(7) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px) + 144px); z-index: 7; }
+.sectioncards .wrapper > .card:nth-of-type(8) { top: calc(var(--sectioncards-sticky-top) + var(--title-h, 0px) + 168px); z-index: 8; }
+
+/* ─── CARD INNER LAYOUT ──────────────────────────────────── */
+.sectioncards .card__inner {
+  display: grid;
+  grid-template-columns:
+    clamp(4.25rem, 10.5vw, 6.75rem)
+    minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  gap: clamp(1rem, 2vw, 1.5rem) clamp(2.75rem, 6vw, 5rem);
+  align-items: start;
+  padding-left: 42px;
+}
+
+/* ─── INDEX (left column, dot-matrix) ────────────────────── */
+.sectioncards .card__index {
+  display: block;
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  position: relative;
+  z-index: 2;
+  user-select: none;
+  pointer-events: none;
+}
+
+.sectioncards .card__index-svg {
+  display: block;
+  width: clamp(4.25rem, 10.5vw, 6.75rem);
+  height: auto;
+  overflow: visible;
+}
+
+/* ─── CONTENT COLUMN ─────────────────────────────────────── */
+.sectioncards .card__content {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  grid-row: 1;
+  min-width: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.sectioncards .card__content h2 {
+  font-size: clamp(1.125rem, 2.2vw, 1.75rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.025em;
+  line-height: 1.0;
+  color: #0a0a0a;
+  margin-bottom: 0.625rem;
+}
+
+.sectioncards .card__sub {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #0047ff;
+  line-height: 1.4;
+  margin-bottom: 0.875rem;
+}
+
+.sectioncards .card__content > p:not(.card__sub) {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #888888;
+  line-height: 1.75;
+  max-width: 820px;
+}
+
+/* ─── CARD IMAGES (full-width bottom layer) ──────────────── */
+.sectioncards .card__images {
+  grid-column: 1 / -1;
+  grid-row: 2;
+  min-width: 0;
+}
+
+.sectioncards .card__img {
+  overflow: hidden;
+  border: 1px solid #e5e5e5;
+  background: #f5f5f5;
+  min-height: 0;
+}
+
+.sectioncards .card__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sectioncards .card__img-stack {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+  min-height: 0;
+}
+
+/* Card 1, 4, 7… — large left, two stacked right */
+.sectioncards .wrapper > .card:nth-of-type(3n+1) .card__images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  height: clamp(148px, 19vw, 196px);
+}
+
+/* Card 2, 5, 8… — three equal columns */
+.sectioncards .wrapper > .card:nth-of-type(3n+2) .card__images {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  height: clamp(112px, 16vw, 148px);
+}
+
+/* Card 3, 6, 9… — two stacked left, large right */
+.sectioncards .wrapper > .card:nth-of-type(3n) .card__images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  height: clamp(148px, 19vw, 196px);
+}
+
+/* Offset sticky stack below fixed site header on full pages */
+body:has(#hdr) .sectioncards {
+  --sectioncards-sticky-top: 72px;
+}
+
+/* Keep sticky cards from painting over later page sections */
+#founder,
+#philosophy,
+#editorial,
+#eq,
+#contact {
+  position: relative;
+  z-index: 1;
+}

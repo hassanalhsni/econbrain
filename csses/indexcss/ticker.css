@@ -1,0 +1,39 @@
+/**
+ * index.html — Ticker strip
+ */
+
+.ticker {
+  background: var(--accent);
+  padding: 0.875rem 0;
+  overflow: hidden;
+  position: relative;
+  z-index: 3;
+}
+
+.ticker__inner {
+  display: flex;
+  white-space: nowrap;
+  animation: ticker 36s linear infinite;
+}
+
+.ticker__item {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  padding: 0 2rem;
+}
+
+.ticker__sep {
+  color: rgba(255, 255, 255, 0.35);
+  padding: 0 0.5rem;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

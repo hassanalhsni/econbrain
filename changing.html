@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EconBrain — The Method</title>
+  <style>
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --cream:      #F5F2EB;
+  --black:      #0a0a0a;
+  --accent:     #0047FF;
+  --muted:      #4a4a4a;
+  --border:     rgba(0,0,0,0.1);
+  --ease:       cubic-bezier(.25,.46,.45,.94);
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+
+body {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background: var(--cream);
+  color: var(--black);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* ─── Intro ─────────────────────────────────────────────────── */
+
+.intro {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--cream);
+}
+
+.intro__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.intro__line { width: 3rem; height: 1px; background: var(--accent); }
+
+.intro__kicker {
+  font-size: .5625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--accent);
+}
+
+.intro__title {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: .92;
+  letter-spacing: -.03em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 1.5rem;
+}
+
+.intro__sub {
+  max-width: 28rem;
+  margin: 0 auto 2rem;
+  font-size: clamp(.95rem, 1.3vw, 1.15rem);
+  color: var(--muted);
+  font-weight: 400;
+  line-height: 1.75;
+}
+
+.intro__scroll-hint {
+  display: inline-block;
+  font-size: .5625rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+/* ─── Scroll section ─────────────────────────────────────────── */
+
+/*
+  The section is 400vh; intro above is 100vh.
+  view-timeline cover range = sectionHeight + viewportHeight = 500vh total.
+  Sticky scroll starts at cover 20% (100vh / 500vh)
+  Sticky scroll ends   at cover 80% (400vh / 500vh)
+  Each of the 3 transitions occupies 20% of cover range:
+    Slide 1: cover 20% → cover 40%
+    Slide 2: cover 40% → cover 60%
+    Slide 3: cover 60% → cover 80%
+*/
+
+.scroll-section {
+  position: relative;
+  height: 400vh;
+  /* Named view-timeline so child slides can reference it */
+  view-timeline: --section block;
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+/* ─── Image panel ────────────────────────────────────────────── */
+
+.stage {
+  flex: 0 0 50%;
+  width: 50%;
+}
+
+.image-window {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  border-right: 1px solid var(--border);
+  overflow: hidden;
+  background: #e8e4db;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  will-change: clip-path;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Slide 0: always visible */
+.slide[data-index="0"] {
+  clip-path: inset(0 0 0 0);
+  z-index: 0;
+}
+
+/* Slides 1-3: revealed by CSS scroll-driven animation */
+@keyframes slide-reveal {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+
+.slide[data-index="1"] {
+  z-index: 1;
+  clip-path: inset(0 0 100% 0);
+  animation: slide-reveal linear both;
+  animation-timeline: --section;
+  animation-range: cover 20% cover 40%;
+}
+.slide[data-index="2"] {
+  z-index: 2;
+  clip-path: inset(0 0 100% 0);
+  animation: slide-reveal linear both;
+  animation-timeline: --section;
+  animation-range: cover 40% cover 60%;
+}
+.slide[data-index="3"] {
+  z-index: 3;
+  clip-path: inset(0 0 100% 0);
+  animation: slide-reveal linear both;
+  animation-timeline: --section;
+  animation-range: cover 60% cover 80%;
+}
+
+/* ─── Info panel ─────────────────────────────────────────────── */
+
+.info {
+  flex: 0 0 50%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  position: relative;
+}
+
+/* Stack all panels in the same grid cell */
+.info__panels {
+  display: grid;
+}
+
+.info__inner {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+  pointer-events: none;
+}
+
+.info__inner.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.info__kicker {
+  font-size: .5625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+}
+
+.info__heading {
+  font-size: clamp(1.125rem, 1.75vw, 1.5rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -.02em;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+
+.info__body {
+  font-size: .9375rem;
+  font-weight: 400;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 32rem;
+}
+
+/* ─── Progress bar (pure CSS) ────────────────────────────────── */
+
+.info__progress {
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 2px;
+  background: rgba(0,0,0,.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+@keyframes bar-grow {
+  from { height: 0%; }
+  to   { height: 100%; }
+}
+
+.info__progress-bar {
+  width: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  height: 0%;
+  animation: bar-grow linear both;
+  animation-timeline: --section;
+  animation-range: cover 20% cover 80%;
+}
+
+/* ─── Dots ───────────────────────────────────────────────────── */
+
+.info__dots {
+  display: flex;
+  gap: .6rem;
+  margin-top: 2rem;
+}
+
+.info__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  background: transparent;
+  transition: background .4s var(--ease), transform .4s var(--ease);
+}
+
+.info__dot.is-active {
+  background: var(--accent);
+  transform: scale(1.25);
+}
+
+/* ─── Outro ──────────────────────────────────────────────────── */
+
+.outro {
+  min-height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: clamp(4rem, 8vw, 7rem) clamp(1.5rem, 6vw, 5rem);
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+}
+
+.outro__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.outro__line { width: 3rem; height: 1px; background: var(--accent); }
+
+.outro__label {
+  font-size: .5625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .18em;
+  color: var(--accent);
+}
+
+.outro__title {
+  font-size: clamp(2rem, 4vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -.03em;
+  line-height: .92;
+  color: var(--black);
+  margin-bottom: 1.5rem;
+}
+
+.outro__sub {
+  font-size: .9375rem;
+  color: var(--muted);
+  line-height: 1.75;
+  max-width: 28rem;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  .sticky { flex-direction: column; }
+  .stage  { flex: 0 0 50%; width: 100%; height: 50vh; }
+  .image-window { width: 100%; height: 50vh; border-right: none; border-bottom: 1px solid var(--border); }
+  .info   { flex: 0 0 50%; width: 100%; height: 50vh; padding: 1.5rem 1.25rem; }
+  .info__progress { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0s !important; transition-duration: 0s !important; }
+  /* All slides visible immediately */
+  .slide[data-index] { clip-path: inset(0 0 0 0) !important; }
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- ─── Intro ─────────────────────────────────────────── -->
+  <section class="intro">
+    <div>
+      <div class="intro__eyebrow">
+        <span class="intro__line"></span>
+        <span class="intro__kicker">Our Process</span>
+        <span class="intro__line"></span>
+      </div>
+      <h1 class="intro__title">The EconBrain<br>Method</h1>
+      <p class="intro__sub">Intelligence-led strategy built to survive board-level scrutiny, regulatory examination, and sustained market pressure.</p>
+      <span class="intro__scroll-hint" aria-hidden="true">Scroll to explore &darr;</span>
+    </div>
+  </section>
+
+  <!-- ─── Scroll section ───────────────────────────────── -->
+  <section class="scroll-section" aria-label="Methodology stages">
+    <div class="sticky">
+
+      <!-- Left: images driven entirely by CSS -->
+      <div class="stage">
+        <div class="image-window">
+          <div class="slide" data-index="0">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=720&h=900&fit=crop"
+                 alt="Intelligence Before Strategy — data analysis" loading="eager" />
+          </div>
+          <div class="slide" data-index="1">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=720&h=900&fit=crop"
+                 alt="Research-Driven Design — quantitative modelling" loading="lazy" />
+          </div>
+          <div class="slide" data-index="2">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=720&h=900&fit=crop"
+                 alt="Institutional-Grade Execution — boardroom strategy" loading="lazy" />
+          </div>
+          <div class="slide" data-index="3">
+            <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=720&h=900&fit=crop"
+                 alt="Long-Term Strategic Partnership — collaboration" loading="lazy" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: pre-rendered panels, JS only toggles .is-active -->
+      <div class="info">
+        <div class="info__panels">
+
+          <div class="info__inner is-active">
+            <p class="info__kicker">Stage 01</p>
+            <h3 class="info__heading">Intelligence Before Strategy</h3>
+            <p class="info__body">Before a single recommendation is made, we build a complete economic and competitive intelligence picture. Primary data, institutional dynamics, market structure analysis, and stress-tested assumptions. Strategy without intelligence is guesswork.</p>
+       
+          </div>
+
+          <div class="info__inner">
+            <p class="info__kicker">Stage 02</p>
+            <h3 class="info__heading">Research-Driven Design</h3>
+            <p class="info__body">Our frameworks are built from quantitative modelling, economic analysis, and policy-grade research. Every recommendation is anchored in verifiable evidence — not best practices borrowed from unrelated comparators or consultancy playbooks.</p>
+      
+          </div>
+
+          <div class="info__inner">
+            <p class="info__kicker">Stage 03</p>
+            <h3 class="info__heading">Institutional-Grade Execution</h3>
+            <p class="info__body">Strategic intent translated into executable roadmaps, governance frameworks, and implementation architectures. Our deliverables are built to survive board-level scrutiny, regulatory examination, and sustained market pressure.</p>
+          
+          </div>
+
+          <div class="info__inner">
+            <p class="info__kicker">Stage 04</p>
+            <h3 class="info__heading">Long-Term Strategic Partnership</h3>
+            <p class="info__body">The most valuable strategic relationships are continuous, not transactional. We position as long-term intelligence partners — tracking outcomes, evolving recommendations, and recalibrating strategy as markets, institutions, and conditions change.</p>
+            <div class="info__dots">
+     
+
+     
+
+    </div>
+  </section>
+
+  <!-- ─── Script: only panels + dots need JS ───────────── -->
+  <script>
+  (function () {
+    const section = document.querySelector('.scroll-section');
+    const panels  = document.querySelectorAll('.info__inner');
+
+    function update() {
+      const { top, height } = section.getBoundingClientRect();
+      const p = Math.max(0, Math.min(1, -top / (height - window.innerHeight)));
+      const i = Math.min(panels.length - 1, Math.floor(p * panels.length));
+      panels.forEach((el, j) => el.classList.toggle('is-active', i === j));
+    }
+
+    addEventListener('scroll', update, { passive: true });
+    update();
+  }());
+  </script>
+
+</body>
+</html>

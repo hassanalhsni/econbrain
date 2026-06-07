@@ -1,0 +1,214 @@
+/* ─── RESET ─────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  border-radius: 0 !important;
+}
+
+/* ─── TOKENS ─────────────────────────────────────────────────── */
+:root {
+  --black: #0a0a0a;
+  --dark: #111111;
+  --darker: #1a1a1a;
+  --white: #ffffff;
+  --cream: #f0ede8;
+  --g100: #e5e5e5;
+  --g400: #e5e5e5;
+  --g600: #555555;
+  --accent: #0047ff;
+  --acc2: #0039cc;
+  --border: #1f1f1f;
+  --borderL: #2a2a2a;
+}
+
+/* ─── BASE ─────────────────────────────────────────────────── */
+html {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ─── LAYOUT ─────────────────────────────────────────────────── */
+.wrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+.wrap--sm {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw;
+}
+
+/* ─── BUTTONS ─────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 2rem 4rem;
+  cursor: pointer;
+  border: none;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+ 
+}
+
+
+
+.btn--white {
+  background: transparent;
+  color: var(--white);
+  border: 1px solid var(--white);
+  background: rgba(0, 0, 0, 0.241); /* translucent bluish box color */
+  backdrop-filter: blur(2px); /* blur effect */
+  -webkit-backdrop-filter: blur(8px); /* Safari support */
+}
+
+.btn--white:hover {
+  background: var(--white);
+  color: var(--black);
+}
+
+.btn--dark {
+  background: transparent;
+  color: var(--black);
+  border: 1px solid var(--black);
+}
+
+.btn--dark:hover {
+  background: var(--black);
+  color: var(--white);
+}
+
+.btn--sm {
+  padding: 0.75rem 1.5rem;
+}
+
+/* ─── LABEL ─────────────────────────────────────────────────── */
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.eyebrow__line {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+  flex-shrink: 0;
+  display: none;
+}
+
+.eyebrow__line--dark {
+  background: var(--black);
+}
+
+.eyebrow__text {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+  display: none;
+}
+
+.eyebrow__text--gray {
+  color: var(--g400);
+}
+
+.eyebrow__text--dark {
+  color: var(--g600);
+}
+
+/* ─── REVEAL ANIMATION ───────────────────────────────────────── */
+.r {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(6px);
+  transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.r.on {
+  opacity: 1;
+  transform: translateY(0);
+  filter: blur(0);
+}
+
+.r.d1 {
+  transition-delay: 0.1s;
+}
+
+.r.d2 {
+  transition-delay: 0.2s;
+}
+
+.r.d3 {
+  transition-delay: 0.3s;
+}
+
+.r.d4 {
+  transition-delay: 0.4s;
+}
+
+.r.d5 {
+  transition-delay: 0.5s;
+}
+
+.r.d6 {
+  transition-delay: 0.6s;
+}
+
+/* Footer helpers (if markup is added later) */
+@media (max-width: 1080px) {
+
+  .btn {
+    padding: 1rem 2rem;
+  }
+  .footer__grid {
+    flex-direction: column;
+  }
+
+  .footer__cols {
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}

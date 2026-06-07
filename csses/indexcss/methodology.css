@@ -1,0 +1,337 @@
+/* â”€â”€â”€ Scroll section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+/*
+  The section is 400vh; intro above is 100vh.
+  view-timeline cover range = sectionHeight + viewportHeight = 500vh total.
+  Sticky scroll starts at cover 20% (100vh / 500vh)
+  Sticky scroll ends   at cover 80% (400vh / 500vh)
+  Each of the 3 transitions occupies 20% of cover range:
+    Slide 1: cover 20% â†’ cover 40%
+    Slide 2: cover 40% â†’ cover 60%
+    Slide 3: cover 60% â†’ cover 80%
+*/
+
+/* â”€â”€â”€â”€â”€ Add grid background to section and panel backgrounds â”€â”€â”€â”€â”€ */
+
+/* Reusable grid background as CSS variable for light/cream panels */
+:root {
+  --grid-bg: 
+    linear-gradient(to right, rgba(0,0,0,0.06) 1px, transparent 1px), 
+    linear-gradient(to bottom, rgba(0,0,0,0.06) 1px, transparent 1px);
+  --grid-size: 32px;
+  --grid-tile: var(--grid-size) var(--grid-size);
+  --grid-bg-size: var(--grid-tile), var(--grid-tile);
+  --grid-bg-over-cream-size: var(--grid-tile), var(--grid-tile), auto;
+}
+
+.scroll-section {
+  position: relative;
+  height: 400vh;
+  /* Named view-timeline so child slides can reference it */
+  view-timeline: --section block;
+  /* Grid background */
+  background-image: var(--grid-bg);
+  background-size: var(--grid-bg-size);
+}
+
+.intro {
+  min-height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background:
+    var(--grid-bg),
+    var(--cream);
+  background-size: var(--grid-bg-over-cream-size);
+  background-blend-mode: normal, normal;
+}
+
+.intro__eyebrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+ 
+.intro__line {
+  width: 3rem;
+  height: 1px;
+  background: var(--accent);
+}
+ 
+.intro__kicker {
+  font-size: 0.5625rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--accent);
+}
+ 
+.intro__title {
+  font-size: clamp(2.5rem, 7vw, 6rem);
+  font-weight: 900;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  color: var(--black);
+  margin-bottom: 1.5rem;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(6px); }
+}
+
+.sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+  background:
+    var(--grid-bg),
+    var(--cream);
+  background-size: var(--grid-bg-over-cream-size);
+  background-blend-mode: normal, normal;
+}
+  
+/* â”€â”€â”€ Image panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  
+.stage {
+  flex: 0 0 50%;
+  width: 50%;
+}
+  
+.image-window {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  --image-pad-top: clamp(2rem, 5vh, 3.5rem);
+  padding-top: var(--image-pad-top);
+  box-sizing: border-box;
+  background:
+    var(--grid-bg),
+    var(--cream);
+  background-size: var(--grid-bg-over-cream-size);
+}
+  
+.slide {
+  position: absolute;
+  top: calc(var(--image-pad-top) + (100% - var(--image-pad-top)) / 2);
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: min(85%, 600px);
+  height: min(78vh, 620px);
+  will-change: clip-path;
+  background:
+    var(--grid-bg),
+    var(--cream);
+  background-size: var(--grid-bg-over-cream-size);
+}
+  
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+  
+/* Slide 0: always visible */
+.slide[data-index="0"] {
+  clip-path: inset(0 0 0 0);
+  z-index: 0;
+}
+  
+/* Slides 1-3: revealed by CSS scroll-driven animation */
+@keyframes slide-reveal {
+  from { clip-path: inset(0 0 100% 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+  
+.slide[data-index="1"] {
+  z-index: 1;
+  clip-path: inset(0 0 100% 0);
+  animation: slide-reveal linear both;
+  animation-timeline: --section;
+  animation-range: cover 20% cover 40%;
+}
+.slide[data-index="2"] {
+  z-index: 2;
+  clip-path: inset(0 0 100% 0);
+  animation: slide-reveal linear both;
+  animation-timeline: --section;
+  animation-range: cover 40% cover 60%;
+}
+.slide[data-index="3"] {
+  z-index: 3;
+  clip-path: inset(0 0 100% 0);
+  animation: slide-reveal linear both;
+  animation-timeline: --section;
+  animation-range: cover 60% cover 80%;
+}
+  
+/* â”€â”€â”€ Info panel â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  
+.info {
+  flex: 0 0 50%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem;
+  position: relative;
+  background:
+    var(--grid-bg),
+    var(--cream);
+  background-size: var(--grid-bg-over-cream-size);
+}
+  
+/* Stack all panels in the same grid cell */
+.info__panels {
+  display: grid;
+}
+  
+.info__inner {
+  grid-area: 1 / 1;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity .4s var(--ease), transform .4s var(--ease);
+  pointer-events: none;
+}
+  
+.info__inner.is-active {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+  
+.info__kicker {
+  font-size: 3.25rem;
+  font-weight: 1000;
+  text-transform: uppercase;
+  letter-spacing: 0em;
+  color: black;
+  margin-bottom: 1.25rem;
+}
+  
+.info__heading {
+  font-size: clamp(1.75rem, 2vw, 3.25rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -.02em;
+  line-height: 1;
+  color: var(--black);
+  margin-bottom: 1rem;
+}
+  
+.info__body {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: black;
+  line-height: 1.75;
+  max-width: 32rem;
+}
+  
+/* â”€â”€â”€ Progress bar (pure CSS) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+  
+.info__progress {
+  position: absolute;
+  left: 0;
+  top: 10%;
+  bottom: 10%;
+  width: 2px;
+  background: rgba(0,0,0,.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+  
+@keyframes bar-grow {
+  from { height: 0%; }
+  to   { height: 100%; }
+}
+  
+.info__progress-bar {
+  width: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  height: 0%;
+  animation: bar-grow linear both;
+  animation-timeline: --section;
+  animation-range: cover 20% cover 80%;
+}
+
+/* â”€â”€â”€ Mobile: image stack on top, copy below â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+@media (max-width: 768px) {
+  .sticky {
+    flex-direction: column;
+    /* Pin only after the image has scrolled up a bit */
+    top: clamp(2.75rem, 11vh, 4.5rem);
+    background:
+      var(--grid-bg),
+      var(--cream);
+    background-size: var(--grid-bg-over-cream-size);
+  }
+
+  .intro{
+    min-height: 30vh;
+    background:
+      var(--grid-bg),
+      var(--cream);
+    background-size: var(--grid-bg-over-cream-size);
+  }
+
+  .stage {
+    flex: 0 0 42vh;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .image-window {
+    height: 100%;
+    border-right: none;
+    --image-pad-top: clamp(2.5rem, 9vh, 3.75rem);
+    padding-top: var(--image-pad-top);
+    box-sizing: border-box;
+    background-size: var(--grid-bg-over-cream-size);
+  }
+
+  .slide {
+    width: min(72%, 300px);
+    height: min(34vh, 260px);
+    top: calc(1.25rem + (100% - var(--image-pad-top)) / 2);
+  }
+
+  .info {
+    flex: 1 1 auto;
+    width: 100%;
+    max-width: 100%;
+    min-height: 0;
+    justify-content: flex-start;
+    padding: 1.5rem 1.25rem 2rem;
+    overflow-y: auto;
+    background:
+      var(--grid-bg),
+      var(--cream);
+    background-size: var(--grid-bg-over-cream-size);
+  }
+
+  .info__kicker {
+    font-size: 2rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .info__heading {
+    font-size: clamp(1.25rem, 4.5vw, 1.625rem);
+    margin-bottom: 0.75rem;
+  }
+
+  .info__body {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+}
