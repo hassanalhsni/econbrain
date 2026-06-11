@@ -83,7 +83,7 @@
     .r.d1 { transition-delay: 0.1s; }
     .r.d2 { transition-delay: 0.2s; }
     .r.d3 { transition-delay: 0.3s; }
-    .r.d4 { transition-delay: 0.4s; }
+    .r.d4 { display: none;}
     .r.d5 { transition-delay: 0.5s; }
     .r.d6 { transition-delay: 0.6s; }
 
@@ -354,9 +354,7 @@
       align-items: flex-start;
       gap: 1rem;
       padding: 0.9rem 0;
-      border-top: 1px solid #1f1f1f;
     }
-    .results__item:last-child { border-bottom: 1px solid #1f1f1f; }
 
     .results__item-dot {
       width: 5px;
