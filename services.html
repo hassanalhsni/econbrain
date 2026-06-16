@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulting Services Dubai | EconBrain</title>
+  <meta name="description" content="Explore EconBrain's full range of consulting services across business strategy, AI & innovation, market research, human capital, and operations across Dubai, the UAE, and the GCC.">
+  <meta name="keywords" content="consulting services Dubai, management consulting UAE, feasibility studies GCC, market research consultancy">
+  <link rel="canonical" href="https://www.econbrain.ae/services.html">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="EconBrain">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EconBrain">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Consulting Services Dubai | EconBrain">
+  <meta property="og:description" content="The full range of EconBrain consulting services across strategy, AI, research, people, and operations.">
+  <meta property="og:url" content="https://www.econbrain.ae/services.html">
+  <meta property="og:image" content="https://www.econbrain.ae/imgs/logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Consulting Services Dubai | EconBrain">
+  <meta name="twitter:description" content="The full range of EconBrain consulting services across strategy, AI, research, people, and operations.">
+  <meta name="twitter:image" content="https://www.econbrain.ae/imgs/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="csses/commoncss/base.css">
+  <link rel="stylesheet" href="csses/commoncss/header.css">
+  <link rel="stylesheet" href="csses/commoncss/contact-cta.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════════
+       SERVICES INDEX — HERO (half the height of a standard service hero)
+       Standard service hero = 100vh / min 760px → here 50vh / min 380px
+       ═══════════════════════════════════════════════════════════════════ */
+    #services-hero {
+      position: relative;
+      height: 50vh;
+      min-height: 380px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      padding-bottom: clamp(2rem, 4vw, 3.5rem);
+      margin-top: 72px; /* clears the fixed header */
+    }
+
+    .services-hero__bg { position: absolute; inset: 0; z-index: 0; }
+    .services-hero__bg img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center 35%;
+    }
+
+    .services-hero__overlay { position: absolute; inset: 0; z-index: 1; background: rgba(10, 10, 10, 0.5); }
+    .services-hero__overlay::after {
+      content: '';
+      position: absolute; bottom: 0; left: 0; right: 0; height: 80%;
+      background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.7) 50%, transparent 100%);
+    }
+
+    .services-hero__content { position: relative; z-index: 2; }
+
+    .services-hero__breadcrumb { margin-bottom: clamp(1.25rem, 2.5vw, 2rem); }
+    .services-hero__bc-list {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 0.5rem; list-style: none;
+      font-size: 0.6875rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+    }
+    .services-hero__bc-item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.45); }
+    .services-hero__bc-item a { color: rgba(255,255,255,0.6); transition: color 0.2s; }
+    .services-hero__bc-item a:hover { color: #ffffff; }
+    .services-hero__bc-item + .services-hero__bc-item::before {
+      content: '/'; color: rgba(255,255,255,0.25); margin-right: 0.5rem;
+    }
+    .services-hero__bc-item[aria-current="page"] { color: #0047ff; }
+
+    .services-hero__h {
+      font-size: clamp(2.25rem, 5vw, 4.75rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.035em;
+      line-height: 0.9;
+      color: #ffffff;
+      max-width: 900px;
+    }
+    .services-hero__desc {
+      margin-top: clamp(1rem, 2vw, 1.5rem);
+      font-size: clamp(0.875rem, 1.1vw, 1rem);
+      font-weight: 400;
+      color: rgba(255,255,255,0.78);
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       SERVICES INDEX — CATEGORY CARDS (stacked, no borders, margin spacing)
+       ═══════════════════════════════════════════════════════════════════ */
+    #services-list {
+      background: #0a0a0a;
+      padding: clamp(3.5rem, 8vw, 7rem) 0;
+    }
+
+    .cat-stack {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(1.5rem, 3vw, 2.75rem); /* spacing between category cards */
+    }
+
+    .cat-card {
+      display: grid;
+      grid-template-columns: 20% 1fr;          /* icon 20% · body 80% */
+      align-items: center;
+      gap: clamp(1.5rem, 3vw, 3rem);
+      padding: clamp(1.75rem, 3vw, 2.75rem);
+    }
+
+    .cat-card__icon {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      max-width: 160px;
+      object-fit: cover;
+      justify-self: start;
+    }
+
+    .cat-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(1rem, 2vw, 1.75rem);
+    }
+
+    .cat-card__title {
+      font-size: clamp(1.25rem, 2.4vw, 2.25rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      color: #ffffff;
+    }
+
+    .cat-card__services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    .cat-service {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      padding: 0.85rem 1.25rem;
+      background: #0a0a0a;
+      color: #e5e5e5;
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      line-height: 1.3;
+      transition: background 0.22s, color 0.22s;
+    }
+    .cat-service__arrow {
+      width: 16px; height: 16px;
+      flex-shrink: 0;
+      color: #0047ff;
+      transition: transform 0.22s, color 0.22s;
+    }
+    .cat-service:hover { background: #0047ff; color: #ffffff; }
+    .cat-service:hover .cat-service__arrow { color: #ffffff; transform: translateX(4px); }
+
+    /* ─── RESPONSIVE — stack everything on mobile ─────────────────────── */
+    @media (max-width: 860px) {
+      .cat-card {
+        grid-template-columns: 1fr;            /* icon stacks above body */
+        justify-items: start;
+        gap: clamp(1.25rem, 4vw, 2rem);
+      }
+      .cat-card__icon { max-width: 96px; }
+      .cat-service { width: 100%; }            /* full-width buttons when stacked */
+    }
+  </style>
+</head>
+
+<body>
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header id="hdr">
+  <div class="wrap">
+    <div class="hdr__inner">
+
+      <a href="index.html" class="logo">
+        <span class="logo__mark">EconBrain</span>
+        <span class="logo__sub">Feasibility Studies Consultancies</span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav__a">Home</a>
+        <a href="about.html" class="nav__a">About</a>
+
+        <div class="nav__drop">
+          <a href="services.html" class="nav__drop-trigger">Services</a>
+          <div class="dropdown">
+
+            <div class="dropdown__grid">
+
+              <a href="services/ai.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10"/><path d="M9 7V5M12 7V5M15 7V5M9 17v2M12 17v2M15 17v2M7 9H5M7 12H5M7 15H5M17 9h2M17 12h2M17 15h2"/><rect x="9" y="9" width="6" height="6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">01</span><span class="dd-item__name">Innovation &amp; Artificial Intelligence Research &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/standardization.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">02</span><span class="dd-item__name">Quality &amp; Standardization Consultants</span></span>
+              </a>
+
+              <a href="services/marketing.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M8 20V12M12 20V8M16 20V4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">03</span><span class="dd-item__name">Marketing Research &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/hr.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.5"/><path d="M20 20c0-2.8-1.8-5.2-4-6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">04</span><span class="dd-item__name">Human Resources Consultancies</span></span>
+              </a>
+
+              <a href="services/project.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/><rect x="9" y="14" width="6" height="7"/><path d="M9 11h.01M15 11h.01"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">05</span><span class="dd-item__name">Project Development Consultant</span></span>
+              </a>
+
+              <a href="services/management.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="13"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M2 13h20"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">06</span><span class="dd-item__name">Management Consultancies</span></span>
+              </a>
+
+              <a href="services/facilities.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">07</span><span class="dd-item__name">Facilities Resources Planning Consultancy</span></span>
+              </a>
+
+              <a href="services/advertising.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6l-8 4H5a2 2 0 00-2 2v2a2 2 0 002 2h1l1.5 4h2L8 16h2l8 4v-2"/><path d="M18 8c1 .5 2 1.5 2 4s-1 3.5-2 4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">08</span><span class="dd-item__name">Advertising Researches &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/media.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14"/><path d="M2 9h20M2 15h20M7 5V3M12 5V3M17 5V3M7 19v2M12 19v2M17 19v2"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">09</span><span class="dd-item__name">Media Studies &amp; Consultancies</span></span>
+              </a>
+
+              <a href="services/feasibility.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5M10 9H8"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">10</span><span class="dd-item__name">Feasibility Studies Consultancies</span></span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <a href="#" class="nav__a">Insights</a>
+        <a href="contact.html" class="nav__a">Contact</a>
+      </nav>
+
+      <div class="hdr__actions">
+        <button class="hamburger" onclick="openNav()" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="m-nav" id="mNav">
+  <button class="m-nav__close" onclick="closeNav()">✕</button>
+  <a href="index.html" class="m-nav__a" onclick="closeNav()">Home</a>
+  <a href="about.html" class="m-nav__a" onclick="closeNav()">About</a>
+
+  <a href="services.html" class="m-nav__a" onclick="closeNav()">Services</a>
+
+  <a href="#" class="m-nav__a" onclick="closeNav()">Insights</a>
+  <a href="contact.html" class="m-nav__a" onclick="closeNav()">Contact</a>
+</nav>
+
+
+<main>
+
+  <!-- ════════════════════ HERO (half height) ════════════════════ -->
+  <section id="services-hero">
+    <div class="services-hero__bg">
+      <img
+        src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1920&q=80&auto=format&fit=crop"
+        alt="EconBrain consulting environment"
+        loading="eager"
+      >
+    </div>
+    <div class="services-hero__overlay"></div>
+
+    <div class="services-hero__content wrap">
+      <nav class="services-hero__breadcrumb" aria-label="Breadcrumb">
+        <ol class="services-hero__bc-list">
+          <li class="services-hero__bc-item"><a href="index.html">Home</a></li>
+          <li class="services-hero__bc-item" aria-current="page">Services</li>
+        </ol>
+      </nav>
+
+      <h1 class="services-hero__h r d1">OUR SERVICES.</h1>
+      <p class="services-hero__desc r d2">
+        Five practice areas built to help organizations across Dubai, the UAE, and the GCC
+        plan with clarity, decide with evidence, and grow with confidence.
+      </p>
+    </div>
+  </section>
+
+
+  <!-- ════════════════════ CATEGORY CARDS ════════════════════ -->
+  <section id="services-list">
+    <div class="wrap">
+      <div class="cat-stack">
+
+        <!-- 01 — Business Strategy & Planning -->
+        <article class="cat-card r">
+          <img class="cat-card__icon" src="imgs/s1.webp" alt="Business strategy and planning icon">
+          <div class="cat-card__body">
+            <h2 class="cat-card__title">Business Strategy &amp; Planning</h2>
+            <div class="cat-card__services">
+              <a class="cat-service" href="services/management.html">Management Consultancies<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a class="cat-service" href="services/project.html">Project Development Consultant<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a class="cat-service" href="services/feasibility.html">Feasibility Studies Consultancies<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 02 — AI & Innovation -->
+        <article class="cat-card r">
+          <img class="cat-card__icon" src="imgs/s2.webp" alt="AI and innovation icon">
+          <div class="cat-card__body">
+            <h2 class="cat-card__title">AI &amp; Innovation</h2>
+            <div class="cat-card__services">
+              <a class="cat-service" href="services/ai.html">Innovation &amp; Artificial Intelligence Research &amp; Consultancies<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 03 — Market Research & Insights -->
+        <article class="cat-card r">
+          <img class="cat-card__icon" src="imgs/s3.webp" alt="Market research and insights icon">
+          <div class="cat-card__body">
+            <h2 class="cat-card__title">Market Research &amp; Insights</h2>
+            <div class="cat-card__services">
+              <a class="cat-service" href="services/marketing.html">Marketing Research &amp; Consultancies<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a class="cat-service" href="services/advertising.html">Advertising Researches &amp; Consultancies<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a class="cat-service" href="services/media.html">Media Studies &amp; Consultancies<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 04 — Human Capital -->
+        <article class="cat-card r">
+          <img class="cat-card__icon" src="imgs/s4.webp" alt="Human capital icon">
+          <div class="cat-card__body">
+            <h2 class="cat-card__title">Human Capital</h2>
+            <div class="cat-card__services">
+              <a class="cat-service" href="services/hr.html">Human Resources Consultancies<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 05 — Operations, Quality & Facilities -->
+        <article class="cat-card r">
+          <img class="cat-card__icon" src="imgs/s5.webp" alt="Operations, quality and facilities icon">
+          <div class="cat-card__body">
+            <h2 class="cat-card__title">Operations, Quality &amp; Facilities</h2>
+            <div class="cat-card__services">
+              <a class="cat-service" href="services/standardization.html">Quality &amp; Standardization Consultants<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+              <a class="cat-service" href="services/facilities.html">Facilities Resources Planning Consultancy<svg class="cat-service__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script>
+  /* ── Scroll reveal ─────────────────────────────────────────── */
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        revealObserver.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.r').forEach(el => revealObserver.observe(el));
+
+  document.querySelectorAll('#services-hero .r').forEach((el, i) => {
+    setTimeout(() => el.classList.add('on'), 100 + i * 120);
+  });
+
+  /* ── Header scroll state ──────────────────────────────────── */
+  const hdr = document.getElementById('hdr');
+  window.addEventListener('scroll', () => {
+    hdr.style.background = window.scrollY > 60
+      ? 'rgba(10,10,10,1)'
+      : 'rgba(10,10,10,.96)';
+  }, { passive: true });
+
+  /* ── Mobile nav ───────────────────────────────────────────── */
+  function openNav() {
+    document.getElementById('mNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    document.getElementById('mNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+</script>
+
+</body>
+</html>

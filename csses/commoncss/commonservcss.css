@@ -549,3 +549,105 @@
 
       .footer__nav { flex-wrap: wrap; gap: 1rem; }
     }
+
+    /* ═══════════════════════════════════════════════════════════════════
+       SEO ADDITIONS — Breadcrumb · FAQ · Related Practices
+       Additive, scoped styles that reuse the EconBrain visual identity.
+       ═══════════════════════════════════════════════════════════════════ */
+
+    /* ─── Breadcrumb (sits at top of dark #svc-overview) ──────────────── */
+    .svc-breadcrumb { margin-bottom: clamp(2rem, 4vw, 3rem); }
+    .svc-breadcrumb__list {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: 0.5rem; list-style: none;
+      font-size: 0.6875rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.14em;
+    }
+    .svc-breadcrumb__item { display: flex; align-items: center; gap: 0.5rem; color: rgba(255,255,255,0.4); }
+    .svc-breadcrumb__item a { color: rgba(255,255,255,0.55); transition: color 0.2s; }
+    .svc-breadcrumb__item a:hover { color: #ffffff; }
+    .svc-breadcrumb__item + .svc-breadcrumb__item::before {
+      content: '/'; color: rgba(255,255,255,0.25); margin-right: 0.5rem;
+    }
+    .svc-breadcrumb__item[aria-current="page"] { color: #0047ff; }
+
+    /* ─── FAQ ─────────────────────────────────────────────────────────── */
+    #svc-faq {
+      background: #0a0a0a;
+      padding: clamp(4.5rem, 9vw, 7rem) 0;
+      border-top: 1px solid #1f1f1f;
+    }
+    .faq__header { max-width: 62ch; margin-bottom: clamp(2.5rem, 5vw, 4rem); }
+    .faq__eyebrow {
+      font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+      color: #0047ff; margin-bottom: 1.25rem;
+    }
+    .faq__h {
+      font-size: clamp(2rem, 4.5vw, 3.5rem); font-weight: 900;
+      text-transform: uppercase; letter-spacing: -0.03em;
+      line-height: 0.95; color: #ffffff;
+    }
+    .faq__list { border-top: 1px solid #1f1f1f; }
+    .faq__item { border-bottom: 1px solid #1f1f1f; }
+    .faq__q { 
+      width: 100%; display: flex; justify-content: space-between; align-items: center;
+      gap: 2rem; text-align: left; background: transparent; border: none; cursor: pointer;
+      padding: clamp(1.5rem, 3vw, 2.25rem) 0; font-family: inherit;
+      font-size: clamp(1.0625rem, 1.6vw, 1.375rem); font-weight: 700;
+      color: #ffffff; letter-spacing: -0.01em; transition: color 0.2s;
+    }
+    .faq__icon { flex-shrink: 0; width: 22px; height: 22px; position: relative; }
+    .faq__icon::before, .faq__icon::after {
+      content: ''; position: absolute; background: #0047ff;
+      transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .faq__icon::before { top: 50%; left: 0; width: 100%; height: 2px; transform: translateY(-50%); }
+    .faq__icon::after { left: 50%; top: 0; width: 2px; height: 100%; transform: translateX(-50%); }
+    .faq__item.open .faq__icon::after { transform: translateX(-50%) scaleY(0); }
+    .faq__a { max-height: 0; overflow: hidden; transition: max-height 0.4s cubic-bezier(0.22, 1, 0.36, 1); }
+    .faq__item.open .faq__a { max-height: 640px; }
+    .faq__a-inner {
+      padding: 0 0 clamp(1.5rem, 3vw, 2.25rem); max-width: 84ch;
+      color: rgba(255, 255, 255, 0.93); font-size: clamp(0.9375rem, 1.2vw, 1.0625rem); line-height: 1.8;
+    }
+
+    /* ─── Related Practices (internal linking) ───────────────────────── */
+    #svc-related {
+      background: #111111;
+      padding: clamp(4.5rem, 9vw, 7rem) 0;
+      border-top: 1px solid #1f1f1f;
+    }
+    .related__header { margin-bottom: clamp(2.5rem, 5vw, 3.5rem); }
+    .related__eyebrow {
+      font-size: 0.6875rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; color: #111111; margin-bottom: 1.25rem;
+    }
+    .related__h {
+      font-size: clamp(1.75rem, 4vw, 3rem); font-weight: 900;
+      text-transform: uppercase; letter-spacing: -0.03em; line-height: 0.95; color: #ffffff;
+    }
+    .related__grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1px; background: #1f1f1f; border: 1px solid #1f1f1f;
+    }
+    .related__card {
+      background: #0a0a0a; padding: clamp(2rem, 4vw, 3rem);
+      display: flex; flex-direction: column; gap: 1rem;
+      min-height: 220px; justify-content: space-between; transition: background 0.25s;
+    }
+    .related__card:hover { background: #161616; }
+    .related__card-num {
+      font-size: 0.625rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: #0047ff;
+    }
+    .related__card-h {
+      font-size: clamp(1.125rem, 1.6vw, 1.4rem); font-weight: 800;
+      text-transform: uppercase; letter-spacing: -0.01em; color: #ffffff; line-height: 1.1;
+    }
+    .related__card-p { font-size: 0.875rem; line-height: 1.7; color: rgba(255,255,255,0.5); }
+    .related__card-cta {
+      font-size: 0.625rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7); display: inline-flex; align-items: center; gap: 0.4rem;
+      transition: gap 0.2s, color 0.2s;
+    }
+    .related__card:hover .related__card-cta { color: #0047ff; gap: 0.7rem; }

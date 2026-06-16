@@ -73,6 +73,19 @@
   isolation: isolate;
 }
 
+/* Stretched link — makes the whole service card clickable for SEO/UX
+   without altering the card's visual structure */
+.wwd-card__link {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  text-indent: -9999px;
+  overflow: hidden;
+}
+
 .wwd-card__num {
   position: absolute;
   top: clamp(1.5rem, 2vw, 2rem);

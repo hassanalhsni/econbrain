@@ -94,6 +94,7 @@
   background: none;
   border: none;
   font-family: inherit;
+  text-decoration: none;
 }
 
 .nav__drop-trigger::after {

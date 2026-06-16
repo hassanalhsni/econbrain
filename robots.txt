@@ -1,0 +1,11 @@
+# robots.txt for EconBrain
+# https://www.econbrain.ae/
+
+User-agent: *
+Allow: /
+
+# Block nothing sensitive at this time.
+# Disallow: /private/
+
+# Sitemap location
+Sitemap: https://www.econbrain.ae/sitemap.xml
