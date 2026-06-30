@@ -46,7 +46,6 @@
       justify-content: flex-end;
       overflow: hidden;
       padding-bottom: clamp(2rem, 4vw, 3.5rem);
-      margin-top: 72px; /* clears the fixed header */
     }
 
     .services-hero__bg { position: absolute; inset: 0; z-index: 0; }
@@ -388,6 +387,7 @@
 
 </main>
 
+<script src="js/header-scroll.js"></script>
 <script>
   /* ── Scroll reveal ─────────────────────────────────────────── */
   const revealObserver = new IntersectionObserver(entries => {
@@ -405,13 +405,6 @@
     setTimeout(() => el.classList.add('on'), 100 + i * 120);
   });
 
-  /* ── Header scroll state ──────────────────────────────────── */
-  const hdr = document.getElementById('hdr');
-  window.addEventListener('scroll', () => {
-    hdr.style.background = window.scrollY > 60
-      ? 'rgba(10,10,10,1)'
-      : 'rgba(10,10,10,.96)';
-  }, { passive: true });
 
   /* ── Mobile nav ───────────────────────────────────────────── */
   function openNav() {

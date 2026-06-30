@@ -214,6 +214,48 @@
   height: clamp(148px, 19vw, 196px);
 }
 
+/* ─── MOBILE: index + title row, subtitle below ──────────── */
+@media (max-width: 768px) {
+  .sectioncards .card__inner {
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: auto auto auto;
+    gap: 0.625rem 0.875rem;
+    padding-left: 1.25rem;
+  }
+
+  .sectioncards .card__content {
+    display: contents;
+  }
+
+  .sectioncards .card__index {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: center;
+  }
+
+  .sectioncards .card__index-svg {
+    width: clamp(2.75rem, 14vw, 3.75rem);
+  }
+
+  .sectioncards .card__content h2 {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  .sectioncards .card__sub {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-bottom: 0.75rem;
+  }
+
+  .sectioncards .card__images {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+}
+
 /* Offset sticky stack below fixed site header on full pages */
 body:has(#hdr) .sectioncards {
   --sectioncards-sticky-top: 72px;

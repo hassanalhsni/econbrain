@@ -2,19 +2,53 @@
  * index.html — Header (fixed bar, desktop nav, services dropdown, mobile nav)
  */
 
+ @font-face {
+  font-family: "Bower-Bold";
+  src: url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.eot");
+  src: url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.eot?#iefix")format("embedded-opentype"),
+  url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.woff2")format("woff2"),
+  url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.woff")format("woff"),
+  url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.ttf")format("truetype"),
+  url("https://db.onlinewebfonts.com/t/40fccfffa7bc57048f06f7420d6fe7ae.svg#Bower-Bold")format("svg");
+}
+
 #hdr {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 900;
-  background: rgba(10, 10, 10, 0.96);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #1f1f1f;
-  transition: background 0.3s;
+  background: transparent;
+  border-bottom: none;
+  isolation: isolate;
+}
+
+#hdr::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  bottom: -20px;
+  background: rgba(10, 10, 10, 0.22);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.55) 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0.55) 55%, transparent 100%);
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#hdr.hdr--solid {
+  background: #0a0a0a;
+}
+
+#hdr.hdr--solid::before {
+  opacity: 0;
 }
 
 .hdr__inner {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
@@ -31,10 +65,10 @@
 }
 
 .logo__mark {
-  font-size: 1.0625rem;
+  font-family: "Bower-Bold", sans-serif;
+  font-size: 1.8rem;
   font-weight: 900;
   letter-spacing: 0em;
-  text-transform: uppercase;
   color: #ffffff;
   line-height: 1;
 }
@@ -45,10 +79,8 @@
 }
 
 .logo__sub {
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: #e5e5e5;
   margin-top: 3px;
 }

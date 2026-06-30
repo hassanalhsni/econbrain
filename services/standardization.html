@@ -173,7 +173,7 @@
         <p class="svc-hero__desc r d3">
           EconBrain helps organizations establish quality frameworks, governance systems, and operational standards that improve consistency, strengthen compliance, and support sustainable organizational excellence.
         </p>
-        <a href="#contact" class="btn btn--white r d4">Begin the Conversation →</a>
+        <a href="../contact.html" class="btn btn--white r d4">Begin the Conversation →</a>
       </div>
 
     </div>
@@ -420,7 +420,7 @@
         LASTING SUCCESS IS BUILT ON CONSISTENT STANDARDS, DISCIPLINED EXECUTION AND CONTINUOUS IMPROVEMENT.
       </h2>
      
-      <a href="#contact" class="btn btn--white r d3">Start the Conversation →</a>
+        <a href="../contact.html" class="btn btn--white r d3">Start the Conversation →</a>
     </div>
 
   </section>
@@ -472,6 +472,7 @@
 
 </section>
 
+<script src="../js/header-scroll.js"></script>
 <script>
   /* ── Scroll reveal ─────────────────────────────────────────── */
   const revealObserver = new IntersectionObserver(entries => {
@@ -490,13 +491,6 @@
     setTimeout(() => el.classList.add('on'), 100 + i * 120);
   });
 
-  /* ── Header scroll state ──────────────────────────────────── */
-  const hdr = document.getElementById('hdr');
-  window.addEventListener('scroll', () => {
-    hdr.style.background = window.scrollY > 60
-      ? 'rgba(10,10,10,1)'
-      : 'rgba(10,10,10,.96)';
-  }, { passive: true });
 
   /* ── Mobile nav ───────────────────────────────────────────── */
   function openNav() {
@@ -573,6 +567,8 @@
     }
   ]
 }
+
 </script>
+
 </body>
 </html>

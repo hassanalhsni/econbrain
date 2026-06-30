@@ -1217,7 +1217,7 @@
 
       <a href="#" class="logo">
         <span class="logo__mark">EconBrain</span>
-        <span class="logo__sub">Feasibility Studies Consultancies</span>
+        <span class="logo__sub">Research & Consultancies</span>
       </a>
 
       <nav class="nav">
@@ -1699,13 +1699,8 @@
 </section>
 </main>
 
+<script src="js/header-scroll.js"></script>
 <script>
-  const hdr = document.getElementById('hdr');
-  window.addEventListener('scroll', () => {
-    hdr.style.background = window.scrollY > 60
-      ? 'rgba(10,10,10,1)'
-      : 'rgba(10,10,10,.96)';
-  }, { passive: true });
 
   function openNav() {
     document.getElementById('mNav').classList.add('open');

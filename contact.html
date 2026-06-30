@@ -53,7 +53,6 @@
     #inquiry-hero {
       background: var(--black);
       padding: clamp(7.5rem, 14vh, 10.5rem) 0 clamp(4rem, 7vh, 5.5rem);
-      border-bottom: 1px solid var(--border);
       position: relative;
     }
 
@@ -118,7 +117,6 @@
       color: rgba(255, 255, 255, 0.22);
       line-height: 1.6;
       padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
     }
 
     /* ═══════════════════════════════════════════════════════════════
@@ -152,6 +150,7 @@
       text-transform: uppercase;
       color: var(--accent);
       line-height: 1;
+      display: none;
     }
 
     .inq__block-title {
@@ -159,7 +158,7 @@
       font-weight: 800;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.516);
       line-height: 1;
     }
 
@@ -590,7 +589,14 @@
       transition: transform 9s ease;
     }
 
-    #location:hover .loc__img {
+    iframe.loc__img {
+      object-fit: unset;
+      filter: none;
+      transform: none;
+      transition: none;
+    }
+
+    #location:hover .loc__img:not(iframe) {
       transform: scale(1.07);
     }
 
@@ -791,15 +797,46 @@
         letter-spacing: -0.035em;
       }
 
+      #inquiry-hero {
+        padding-bottom: clamp(2rem, 4vh, 2.5rem);
+      }
+
+      #inquiry-form {
+        padding-top: clamp(1.5rem, 3vw, 2.5rem);
+      }
+
       .loc__city {
         font-size: clamp(3.75rem, 15vw, 5rem);
       }
 
+      .loc__right {
+        display: flex;
+        flex-direction: column;
+        min-height: auto;
+        overflow: visible;
+      }
+
+      .loc__right::after {
+        display: none;
+      }
+
+      iframe.loc__img {
+        width: 100%;
+        height: auto;
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+        flex-shrink: 0;
+      }
+
       .loc__overlay-card {
-        left: 1.25rem;
-        bottom: 1.25rem;
-        right: 1.25rem;
+        position: static;
+        bottom: auto;
+        left: auto;
+        right: auto;
         max-width: none;
+        width: 100%;
+        box-sizing: border-box;
+        border-top: none;
       }
     }
 
@@ -928,12 +965,10 @@
     <div class="wrap">
       <div class="inq-hero__inner">
         <div class="inq-hero__left">
-          <h1 class="inq-hero__h">START A STRATEGIC <em>CONVERSATION.</em></h1>
+          <h1 class="inq-hero__h">START A STRATEGIC CONVERSATION.</h1>
         </div>
         <div class="inq-hero__right">
-          <p class="inq-hero__sub">
-            Contact EconBrain to discuss feasibility studies, economic intelligence, management consulting, and transformation advisory for your organization across Dubai, the UAE, and the wider GCC.
-          </p>
+          
           <p class="inq-hero__note">
             EconBrain · Strategic Intelligence &amp; Transformation Consultancy · Dubai, United Arab Emirates
           </p>
@@ -1114,14 +1149,18 @@
 
     </div>
 
-    <!-- Right: Cinematic City Image -->
+    <!-- Right: Google Maps embed -->
     <div class="loc__right">
-      <img
+      <iframe
         class="loc__img"
-        src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=1600&q=85&auto=format&fit=crop"
-        alt="Dubai skyline — EconBrain regional headquarters and strategic operating base"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1254.6855382003844!2d55.326606090883026!3d25.26406101562012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5cc51263104d%3A0xaba625af1b54f1ad!2sGRAND%20CENTRAL%20HOTEL%20-%2024C%20Al%20Rigga%20Rd%20-%20Al%20Muraqqabat%20-%20Deira%20-%20Dubai!5e0!3m2!1sen!2sae!4v1781655693641!5m2!1sen!2sae"
+        style="border:0;"
+        allowfullscreen
         loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="EconBrain location — Grand Central Hotel, Al Rigga Rd, Deira, Dubai"
       >
+      </iframe>
 
       <div class="loc__overlay-card">
         <span class="loc__card-tag">STRATEGIC OPERATING BASE</span>
@@ -1138,15 +1177,8 @@
 
 
 
+<script src="js/header-scroll.js"></script>
 <script>
-  /* ── Header scroll ── */
-  const hdr = document.getElementById('hdr');
-  window.addEventListener('scroll', () => {
-    hdr.style.background = window.scrollY > 60
-      ? 'rgba(10,10,10,1)'
-      : 'rgba(10,10,10,.96)';
-  }, { passive: true });
-
   /* ── Mobile nav ── */
   function openNav() {
     document.getElementById('mNav').classList.add('open');

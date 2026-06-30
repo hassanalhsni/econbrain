@@ -13,14 +13,12 @@
 .ticker__inner {
   display: flex;
   white-space: nowrap;
-  animation: ticker 36s linear infinite;
+  animation: ticker 10s linear infinite;
 }
 
 .ticker__item {
-  font-size: 0.6875rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
   padding: 0 2rem;
 }
 

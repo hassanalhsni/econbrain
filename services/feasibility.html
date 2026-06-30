@@ -174,7 +174,7 @@
         <p class="svc-hero__desc r d3">
           EconBrain helps investors, organizations, and decision-makers evaluate opportunities before resources are committed — transforming uncertainty into informed, evidence-based investment decisions.
         </p>
-        <a href="#contact" class="btn btn--white r d4">Begin the Conversation →</a>
+          <a href="../contact.html" class="btn btn--white r d4">Begin the Conversation →</a>
       </div>
 
     </div>
@@ -422,7 +422,7 @@
         THE STRONGEST INVESTMENTS<br>ARE BUILT ON EVIDENCE,<br>ANALYSIS,<br>AND STRATEGIC FORESIGHT.
       </h2>
      
-      <a href="#contact" class="btn btn--white r d3">Start the Conversation →</a>
+        <a href="../contact.html" class="btn btn--white r d3">Start the Conversation →</a>
     </div>
 
   </section>
@@ -472,6 +472,7 @@
 
 </section>
 
+<script src="../js/header-scroll.js"></script>
 <script>
   /* ── Scroll reveal ─────────────────────────────────────────── */
   const revealObserver = new IntersectionObserver(entries => {
@@ -490,13 +491,6 @@
     setTimeout(() => el.classList.add('on'), 100 + i * 120);
   });
 
-  /* ── Header scroll state ──────────────────────────────────── */
-  const hdr = document.getElementById('hdr');
-  window.addEventListener('scroll', () => {
-    hdr.style.background = window.scrollY > 60
-      ? 'rgba(10,10,10,1)'
-      : 'rgba(10,10,10,.96)';
-  }, { passive: true });
 
   /* ── Mobile nav ───────────────────────────────────────────── */
   function openNav() {

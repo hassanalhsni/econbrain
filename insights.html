@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insights | Research, Perspective &amp; Strategy | EconBrain</title>
+  <meta name="description" content="Research, strategic thinking, economic perspectives, and industry insights from the EconBrain team across the GCC and MENA.">
+  <meta name="keywords" content="economic insights Dubai, strategy research GCC, EconBrain perspectives, market research insights UAE">
+  <link rel="canonical" href="https://www.econbrain.ae/insights.html">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="EconBrain">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EconBrain">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Insights | Research, Perspective &amp; Strategy | EconBrain">
+  <meta property="og:description" content="Research, strategic thinking, economic perspectives, and industry insights from the EconBrain team.">
+  <meta property="og:url" content="https://www.econbrain.ae/insights.html">
+  <meta property="og:image" content="https://www.econbrain.ae/imgs/logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Insights | Research, Perspective &amp; Strategy | EconBrain">
+  <meta name="twitter:description" content="Research, strategic thinking, economic perspectives, and industry insights from the EconBrain team.">
+  <meta name="twitter:image" content="https://www.econbrain.ae/imgs/logo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="csses/commoncss/base.css">
+  <link rel="stylesheet" href="csses/commoncss/header.css">
+  <link rel="stylesheet" href="csses/commoncss/contact-cta.css">
+
+  <style>
+    /* ═══════════════════════════════════════════════════════════════
+       INSIGHTS PAGE — INTERNAL STYLES
+       Inherits tokens, reset, .wrap, .r reveal from base.css
+       Inherits #hdr, .nav, .m-nav from header.css
+       Inherits #contact info grid from contact-cta.css
+       ═══════════════════════════════════════════════════════════════ */
+
+    :root {
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    main { display: block; }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 1 — HERO (restrained editorial header)
+       ═══════════════════════════════════════════════════════════════ */
+    #insights-hero {
+      background: var(--black);
+      padding: clamp(6.5rem, 11vh, 8.5rem) 0 clamp(2.25rem, 4vh, 3rem);
+      position: relative;
+    }
+
+    /* thin accent rule across full width, directly under fixed header */
+    #insights-hero::before {
+      content: '';
+      position: absolute;
+      top: 72px;
+      left: 0;
+      right: 0;
+      height: 1px;
+    }
+
+    .ins-hero__eyebrow {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+      color: var(--accent);
+      margin-bottom: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .ins-hero__h {
+      font-size: clamp(2.25rem, 4.5vw, 4.5rem);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.04em;
+      line-height: 0.96;
+      color: var(--white);
+      margin: 0;
+    }
+
+    .ins-hero__h span {
+      display: block;
+    }
+
+    .ins-hero__h em {
+      color: var(--accent);
+      font-style: normal;
+    }
+
+    .ins-hero__sub {
+      font-size: clamp(0.875rem, 1.1vw, 1rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.75;
+      max-width: 52ch;
+      margin-top: clamp(1.25rem, 2.5vw, 1.75rem);
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       SECTION 2 — EDITORIAL INSIGHTS GRID
+       Asymmetric 12-column composition — varied card scales
+       ═══════════════════════════════════════════════════════════════ */
+    #insights-grid {
+      background: var(--black);
+      padding: clamp(0.5rem, 1vw, 1rem) 0 clamp(4rem, 8vw, 6.5rem);
+    }
+
+    .ins-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      column-gap: clamp(1.25rem, 2vw, 1.75rem);
+      row-gap: clamp(2rem, 3.5vw, 2.75rem);
+    }
+
+    /* ── Card shells ──────────────────────────────────────────────── */
+    .ins-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Stretched link makes the whole card a single hit target */
+    .ins-card__link {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      font-size: 0;
+      color: transparent;
+    }
+
+    .ins-card__media {
+      position: relative;
+      overflow: hidden;
+      background: var(--darker);
+      margin-bottom: clamp(1rem, 1.5vw, 1.25rem);
+      max-height: 360px;
+    }
+
+    .ins-card__media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(0.15) contrast(1.03);
+      transform: scale(1.001);
+      transition: transform 0.85s var(--ease), filter 0.6s var(--ease);
+    }
+
+    .ins-card:hover .ins-card__media img {
+      transform: scale(1.05);
+    }
+
+    .ins-card__body {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .ins-card__title {
+      font-size: clamp(0.9375rem, 1.25vw, 1.125rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      line-height: 1.18;
+      color: var(--white);
+      transition: color 0.3s var(--ease);
+    }
+
+    .ins-card__arrow {
+      display: inline-block;
+      width: 0.7em;
+      height: 0.7em;
+      margin-left: 0.5rem;
+      vertical-align: baseline;
+      color: var(--accent);
+      transition: transform 0.3s var(--ease);
+    }
+
+    .ins-card__arrow svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .ins-card:hover .ins-card__title {
+      color: var(--accent);
+    }
+
+    .ins-card:hover .ins-card__arrow {
+      transform: translate(4px, -4px);
+    }
+
+    .ins-card__date {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--g600);
+      margin-top: 0.75rem;
+    }
+
+    .ins-card__excerpt {
+      font-size: clamp(0.8125rem, 0.95vw, 0.875rem);
+      font-weight: 400;
+      color: rgba(255, 255, 255, 0.5);
+      line-height: 1.65;
+      margin-top: 0.75rem;
+      max-width: 42ch;
+    }
+
+    /* ── Aspect ratios per card scale (capped via max-height above) ── */
+    .ins-card--w7 .ins-card__media { aspect-ratio: 16 / 9; max-height: 320px; }
+    .ins-card--w5 .ins-card__media { aspect-ratio: 4 / 5; max-height: 360px; }
+    .ins-card--w3 .ins-card__media { aspect-ratio: 4 / 3; max-height: 220px; }
+    .ins-card--w4 .ins-card__media { aspect-ratio: 4 / 3; max-height: 260px; }
+
+    /* ── Column spans (desktop) ───────────────────────────────────── */
+    .ins-card--feature { grid-column: span 12; }
+    .ins-card--w7 { grid-column: span 7; }
+    .ins-card--w5 { grid-column: span 5; }
+    .ins-card--w4 { grid-column: span 4; }
+    .ins-card--w3 { grid-column: span 3; }
+
+    /* ── Feature cards: horizontal split (image + editorial copy) ──── */
+    .ins-card--feature {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: clamp(1.75rem, 3vw, 3rem);
+      align-items: center;
+    }
+
+    .ins-card--feature .ins-card__media {
+      aspect-ratio: 16 / 11;
+      margin-bottom: 0;
+      max-height: 380px;
+    }
+
+    .ins-card--feature.ins-card--reverse .ins-card__media {
+      order: 2;
+    }
+
+    .ins-card--feature .ins-card__title {
+      font-size: clamp(1.375rem, 2.3vw, 2rem);
+      line-height: 1.08;
+    }
+
+    .ins-card--feature .ins-card__excerpt {
+      font-size: clamp(0.875rem, 1vw, 0.9375rem);
+      max-width: 48ch;
+    }
+
+    /* ═══════════════════════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════════════════════ */
+    @media (max-width: 1080px) {
+      .ins-grid {
+        row-gap: clamp(2rem, 4vw, 2.5rem);
+      }
+
+      .ins-card--w7,
+      .ins-card--w5,
+      .ins-card--w4,
+      .ins-card--w3 {
+        grid-column: span 6;
+      }
+
+      .ins-card--w5 .ins-card__media { aspect-ratio: 4 / 3; max-height: 280px; }
+      .ins-card--w7 .ins-card__media { max-height: 280px; }
+
+      .ins-card--feature {
+        grid-column: span 12;
+        grid-template-columns: 1fr;
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+      }
+
+      .ins-card--feature .ins-card__media {
+        aspect-ratio: 16 / 9;
+        max-height: 320px;
+      }
+
+      .ins-card--feature.ins-card--reverse .ins-card__media {
+        order: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .ins-card--w7,
+      .ins-card--w5,
+      .ins-card--w4,
+      .ins-card--w3,
+      .ins-card--feature {
+        grid-column: span 12;
+      }
+
+      .ins-card--w7 .ins-card__media,
+      .ins-card--w5 .ins-card__media,
+      .ins-card--w4 .ins-card__media,
+      .ins-card--w3 .ins-card__media {
+        aspect-ratio: 16 / 10;
+        max-height: 240px;
+      }
+
+      .ins-card--feature .ins-card__media {
+        aspect-ratio: 16 / 10;
+        max-height: 260px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════ HEADER ════════════════════ -->
+<header id="hdr">
+  <div class="wrap">
+    <div class="hdr__inner">
+
+      <a href="index.html" class="logo">
+        <span class="logo__mark">EconBrain</span>
+        <span class="logo__sub">Research & Consultancies</span>
+      </a>
+
+      <nav class="nav">
+        <a href="index.html" class="nav__a">Home</a>
+        <a href="about.html" class="nav__a">About</a>
+
+        <div class="nav__drop">
+          <a href="services.html" class="nav__drop-trigger">Services</a>
+          <div class="dropdown">
+
+            <div class="dropdown__grid">
+
+              <!-- 01 AI & Innovation -->
+              <a href="services/ai.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="7" width="10" height="10"/><path d="M9 7V5M12 7V5M15 7V5M9 17v2M12 17v2M15 17v2M7 9H5M7 12H5M7 15H5M17 9h2M17 12h2M17 15h2"/><rect x="9" y="9" width="6" height="6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">01</span><span class="dd-item__name">Innovation &amp; Artificial Intelligence Research &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 02 Quality -->
+              <a href="services/standardization.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3L4 7v6c0 4.4 3.4 8.5 8 9.5 4.6-1 8-5.1 8-9.5V7L12 3z"/><path d="M9 12l2 2 4-4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">02</span><span class="dd-item__name">Quality &amp; Standardization Consultants</span></span>
+              </a>
+
+              <!-- 03 Marketing Research -->
+              <a href="services/marketing.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M8 20V12M12 20V8M16 20V4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">03</span><span class="dd-item__name">Marketing Research &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 04 Human Resources -->
+              <a href="services/hr.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="8" r="2.5"/><path d="M20 20c0-2.8-1.8-5.2-4-6"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">04</span><span class="dd-item__name">Human Resources Consultancies</span></span>
+              </a>
+
+              <!-- 05 Project Development -->
+              <a href="services/project.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-6 7 6v12"/><rect x="9" y="14" width="6" height="7"/><path d="M9 11h.01M15 11h.01"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">05</span><span class="dd-item__name">Project Development Consultant</span></span>
+              </a>
+
+              <!-- 06 Management -->
+              <a href="services/management.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="13"/><path d="M8 8V6a4 4 0 018 0v2"/><path d="M2 13h20"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">06</span><span class="dd-item__name">Management Consultancies</span></span>
+              </a>
+
+              <!-- 07 Facilities Planning -->
+              <a href="services/facilities.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">07</span><span class="dd-item__name">Facilities Resources Planning Consultancy</span></span>
+              </a>
+
+              <!-- 08 Advertising -->
+              <a href="services/advertising.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8V6l-8 4H5a2 2 0 00-2 2v2a2 2 0 002 2h1l1.5 4h2L8 16h2l8 4v-2"/><path d="M18 8c1 .5 2 1.5 2 4s-1 3.5-2 4"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">08</span><span class="dd-item__name">Advertising Researches &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 09 Media Studies -->
+              <a href="services/media.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14"/><path d="M2 9h20M2 15h20M7 5V3M12 5V3M17 5V3M7 19v2M12 19v2M17 19v2"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">09</span><span class="dd-item__name">Media Studies &amp; Consultancies</span></span>
+              </a>
+
+              <!-- 10 Feasibility Studies -->
+              <a href="services/feasibility.html" class="dd-item">
+                <span class="dd-item__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6z"/><path d="M14 2v6h6"/><path d="M8 13h8M8 17h5M10 9H8"/></svg></span>
+                <span class="dd-item__meta"><span class="dd-item__num">10</span><span class="dd-item__name">Feasibility Studies Consultancies</span></span>
+              </a>
+
+            </div>
+          </div>
+        </div>
+
+        <a href="insights.html" class="nav__a">Insights</a>
+        <a href="contact.html" class="nav__a">Contact</a>
+      </nav>
+
+      <div class="hdr__actions">
+        <button class="hamburger" onclick="openNav()" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Mobile Nav -->
+<nav class="m-nav" id="mNav">
+  <button class="m-nav__close" onclick="closeNav()">✕</button>
+  <a href="index.html" class="m-nav__a" onclick="closeNav()">Home</a>
+  <a href="about.html" class="m-nav__a" onclick="closeNav()">About</a>
+
+  <a href="services.html" class="m-nav__a" onclick="closeNav()">Services</a>
+
+  <a href="insights.html" class="m-nav__a" onclick="closeNav()">Insights</a>
+  <a href="contact.html" class="m-nav__a" onclick="closeNav()">Contact</a>
+</nav>
+
+<main>
+
+  <!-- ════════════════════ SECTION 1 — HERO ════════════════════ -->
+  <section id="insights-hero">
+    <div class="wrap">
+      <h1 class="ins-hero__h">
+        <span class="r d1">insights.</span>
+     
+    </div>
+  </section>
+
+  <!-- ════════════════════ SECTION 2 — EDITORIAL INSIGHTS GRID ════════════════════ -->
+  <section id="insights-grid" aria-label="Latest insights">
+    <div class="wrap">
+      <div class="ins-grid">
+
+        <!-- ── 01 · FEATURE — Economic Competitiveness ──────────────── -->
+        <article class="ins-card ins-card--feature r">
+          <a href="#" class="ins-card__link" aria-label="Read: The new geometry of regional competitiveness">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80&auto=format&fit=crop" alt="Modern skyline representing regional economic competitiveness" loading="eager">
+          </div>
+          <div class="ins-card__body">
+            <h2 class="ins-card__title">The New Geometry of Regional Competitiveness<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h2>
+            <p class="ins-card__excerpt">As capital, talent, and policy realign across the GCC, competitiveness is no longer measured at the national level alone. We examine how cities, sectors, and institutions are becoming the decisive units of economic advantage.</p>
+            <span class="ins-card__date">June 24, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 02 · Artificial Intelligence — wide landscape ────────── -->
+        <article class="ins-card ins-card--w7 r">
+          <a href="#" class="ins-card__link" aria-label="Read: Beyond the pilot — operationalising AI at institutional scale">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=1100&q=80&auto=format&fit=crop" alt="Abstract neural network visualisation" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h2 class="ins-card__title">Beyond the Pilot: Operationalising AI at Institutional Scale<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h2>
+            <p class="ins-card__excerpt">Most organisations can run a proof of concept. Few can embed AI into governance, workflow, and accountability. We map the structural shifts that separate experimentation from durable capability.</p>
+            <span class="ins-card__date">June 19, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 03 · Business Strategy — tall portrait ───────────────── -->
+        <article class="ins-card ins-card--w5 r d1">
+          <a href="#" class="ins-card__link" aria-label="Read: Strategy under uncertainty — a conversation on decision discipline">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?w=800&q=80&auto=format&fit=crop" alt="Executives reviewing strategic priorities" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h2 class="ins-card__title">Strategy Under Uncertainty: A Conversation on Decision Discipline<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h2>
+            <p class="ins-card__excerpt">When the data is incomplete and the stakes are high, leaders default to instinct. We discuss the frameworks that keep strategic decisions rigorous when certainty is not an option.</p>
+            <span class="ins-card__date">June 16, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 04 · Market Research — small ─────────────────────────── -->
+        <article class="ins-card ins-card--w3 r">
+          <a href="#" class="ins-card__link" aria-label="Read: Reading demand before the market moves">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=700&q=80&auto=format&fit=crop" alt="Market analytics dashboard" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h3 class="ins-card__title">Reading Demand Before the Market Moves<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3>
+            <p class="ins-card__excerpt">Primary signals, not lagging reports, reveal where opportunity is forming.</p>
+            <span class="ins-card__date">June 11, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 05 · Feasibility Studies — small ─────────────────────── -->
+        <article class="ins-card ins-card--w3 r d1">
+          <a href="#" class="ins-card__link" aria-label="Read: What a feasibility study should actually decide">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1518684079-3c830dcef090?w=700&q=80&auto=format&fit=crop" alt="Infrastructure project under evaluation" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h3 class="ins-card__title">What a Feasibility Study Should Actually Decide<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3>
+            <p class="ins-card__excerpt">A study that only confirms ambition is a liability. Its job is to test it.</p>
+            <span class="ins-card__date">June 6, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 06 · Innovation — small ──────────────────────────────── -->
+        <article class="ins-card ins-card--w3 r d2">
+          <a href="#" class="ins-card__link" aria-label="Read: Innovation is a system, not an event">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=700&q=80&auto=format&fit=crop" alt="Team mapping an innovation framework" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h3 class="ins-card__title">Innovation Is a System, Not an Event<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3>
+            <p class="ins-card__excerpt">Sustained innovation depends on structure, incentives, and patient capital.</p>
+            <span class="ins-card__date">May 29, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 07 · Leadership — small ──────────────────────────────── -->
+        <article class="ins-card ins-card--w3 r d3">
+          <a href="#" class="ins-card__link" aria-label="Read: The quiet work of institutional leadership">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=700&q=80&auto=format&fit=crop" alt="Leadership roundtable in session" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h3 class="ins-card__title">The Quiet Work of Institutional Leadership<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3>
+            <p class="ins-card__excerpt">Transformation rarely fails on vision. It fails on the discipline of follow-through.</p>
+            <span class="ins-card__date">May 22, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 08 · FEATURE — Organizational Transformation (reverse) ── -->
+        <article class="ins-card ins-card--feature ins-card--reverse r">
+          <a href="#" class="ins-card__link" aria-label="Read: Transformation that survives the boardroom">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1400&q=80&auto=format&fit=crop" alt="Organisation aligning around a transformation roadmap" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h2 class="ins-card__title">Transformation That Survives the Boardroom<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h2>
+            <p class="ins-card__excerpt">Bold mandates are easy to announce and hard to sustain. We look at why most transformation programmes stall in execution — and the governance architecture that keeps them moving from intent to measurable outcome.</p>
+            <span class="ins-card__date">May 15, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 09 · Public Policy — square ──────────────────────────── -->
+        <article class="ins-card ins-card--w4 r">
+          <a href="#" class="ins-card__link" aria-label="Read: When private decisions need policy-grade thinking">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?w=800&q=80&auto=format&fit=crop" alt="Policy briefing environment" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h3 class="ins-card__title">When Private Decisions Need Policy-Grade Thinking<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3>
+            <p class="ins-card__excerpt">Second-order effects decide outcomes. We apply the analytical rigour of policy advisory to enterprise strategy.</p>
+            <span class="ins-card__date">May 8, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 10 · Regional Development — square ───────────────────── -->
+        <article class="ins-card ins-card--w4 r d1">
+          <a href="#" class="ins-card__link" aria-label="Read: The economics of building a region, not a project">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=800&q=80&auto=format&fit=crop" alt="Aerial view of regional development" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h3 class="ins-card__title">The Economics of Building a Region, Not a Project<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3>
+            <p class="ins-card__excerpt">Long-horizon development demands that infrastructure, talent, and demand move together.</p>
+            <span class="ins-card__date">April 30, 2026</span>
+          </div>
+        </article>
+
+        <!-- ── 11 · Project Development — square ────────────────────── -->
+        <article class="ins-card ins-card--w4 r d2">
+          <a href="#" class="ins-card__link" aria-label="Read: From concept to capital — sequencing project development">Read insight</a>
+          <div class="ins-card__media">
+            <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=800&q=80&auto=format&fit=crop" alt="Large-scale development under construction" loading="lazy">
+          </div>
+          <div class="ins-card__body">
+            <h3 class="ins-card__title">From Concept to Capital: Sequencing Project Development<span class="ins-card__arrow"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M17 7H9M17 7V15" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></h3>
+            <p class="ins-card__excerpt">The order in which decisions are made determines whether a project is investable.</p>
+            <span class="ins-card__date">April 23, 2026</span>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════ CONTACT / CTA ════════════════════ -->
+  <section id="contact">
+
+    <div class="contact__info" style="font-size: 1.35rem;">
+      <div class="r">
+        <span class="cinfo__label" style="font-size: 1.1em;">Headquarters</span>
+        <p class="cinfo__val" style="font-size: 1.15em;">Dubai, United Arab Emirates</p>
+      </div>
+      <div class="r d1">
+        <span class="cinfo__label" style="font-size: 1.1em;">Email</span>
+        <p class="cinfo__val" style="font-size: 1.15em;"><a href="mailto:italhasani@gmail.com" style="font-size: 1em;">italhasani@gmail.com</a></p>
+      </div>
+      <div class="r d2">
+        <span class="cinfo__label" style="font-size: 1.1em;">Phone</span>
+        <p class="cinfo__val" style="font-size: 1.15em;"><a href="tel:+971506967476" style="font-size: 1em;">+971 50 696 7476</a></p>
+      </div>
+    </div>
+
+  </section>
+
+</main>
+
+<script src="js/header-scroll.js"></script>
+<script>
+  /* ── Scroll reveal (shared system) ── */
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('on');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.r').forEach(el => observer.observe(el));
+
+  /* Trigger hero reveal immediately */
+  document.querySelectorAll('#insights-hero .r').forEach(el => {
+    setTimeout(() => el.classList.add('on'), 120);
+  });
+
+  /* ── Mobile nav ── */
+  function openNav() {
+    document.getElementById('mNav').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeNav() {
+    document.getElementById('mNav').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ── Smooth scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id === '#') return;
+      const target = document.querySelector(id);
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+<!-- ════════════════════ STRUCTURED DATA (JSON-LD) ════════════════════ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.econbrain.ae/insights.html#insightspage",
+      "url": "https://www.econbrain.ae/insights.html",
+      "name": "Insights | Research, Perspective & Strategy | EconBrain",
+      "description": "Research, strategic thinking, economic perspectives, and industry insights from the EconBrain team across the GCC and MENA.",
+      "inLanguage": "en",
+      "isPartOf": { "@id": "https://www.econbrain.ae/#website" },
+      "about": { "@id": "https://www.econbrain.ae/#organization" }
+    },
+    {
+      "@type": ["Organization", "ProfessionalService"],
+      "@id": "https://www.econbrain.ae/#organization",
+      "name": "EconBrain",
+      "url": "https://www.econbrain.ae/",
+      "logo": "https://www.econbrain.ae/imgs/logo.png",
+      "email": "italhasani@gmail.com",
+      "telephone": "+971506967476",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+      },
+      "areaServed": ["United Arab Emirates", "GCC", "MENA"]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.econbrain.ae/" },
+        { "@type": "ListItem", "position": 2, "name": "Insights", "item": "https://www.econbrain.ae/insights.html" }
+      ]
+    }
+  ]
+}
+</script>
+</body>
+</html>

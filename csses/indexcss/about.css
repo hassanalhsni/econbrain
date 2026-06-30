@@ -5,15 +5,19 @@
 #about {
   position: relative;
   overflow: hidden;
-  padding: clamp(5rem, 10vw, 9rem) 0;
-  min-height: clamp(32rem, 70vh, 48rem);
+  min-height: 100vh;
+  height: 100vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  background: #fff;
 }
 
 .about__bg {
   position: absolute;
-  inset: 0;
+  top: 20%;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: 0;
 }
 
@@ -22,7 +26,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
 }
 
 .about__content {
@@ -112,6 +116,6 @@
 
 @media (max-width: 768px) {
   #about {
-    min-height: auto;
+    height: 100vh;
   }
 }
